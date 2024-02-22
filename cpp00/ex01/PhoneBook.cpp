@@ -1,11 +1,11 @@
 #include "PhoneBook.hpp"
 
-std::string PhoneBook::GetUserInput(std::string prompt) const
+string PhoneBook::getUserInput(std::string prompt) const
 {
-	std::string user_input = "";
+	string user_input = "";
 	while (user_input.empty())
 	{
-		std::cout << prompt;
+		cout << prompt;
 		std::getline(std::cin, user_input);
 		if (user_input.empty())
 			std::cout << "Can't have an empty field. please try again." << std::endl;
@@ -13,24 +13,30 @@ std::string PhoneBook::GetUserInput(std::string prompt) const
 	return (user_input);
 }
 
-Contact *PhoneBook::GetNextContactPtr()
+Contact *PhoneBook::getNextContactPtr()
 {
 	return &m_contact_list[m_write_index];
 }
 
-void PhoneBook::AddContact(void)
+void PhoneBook::addContact(void)
 {
-	Contact *contact = GetNextContactPtr();
+	Contact *contact = getNextContactPtr();
 
 	// Ask user for each entry
-	contact->setFirstName(GetUserInput("First Name: "));
-	contact->setLastName(GetUserInput("Last Name: "));
-	contact->setNickname(GetUserInput("NickName: "));
-	contact->setNumber(GetUserInput("Phone Number: "));
-	contact->setSecret(GetUserInput("Darkest Secret: "));
+	contact->setFirstName(getUserInput("First Name: "));
+	contact->setLastName(getUserInput("Last Name: "));
+	contact->setNickname(getUserInput("NickName: "));
+	contact->setNumber(getUserInput("Phone Number: "));
+	contact->setSecret(getUserInput("Darkest Secret: "));
 
 	contact->printRow();
 
-	// Add new contact to m_contact_list[m_write_index]
 	// increment the write index, loop on 8
+	moveIndex();
+}
+
+void	PhoneBook::moveIndex() 
+{
+	m_write_index++;
+	m_write_index %= 9;
 }

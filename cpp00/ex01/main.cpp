@@ -27,17 +27,24 @@ int main(void)
 		}
 		if (command == "ADD")
 		{
-			phone_book.AddContact();
+			phone_book.addContact();
 		}
 		else if (command == "SEARCH")
 		{
 			std::cout << "NotYetImplemented"<< std::endl;
+		}
+		else if (std::cin.fail()) 
+		{
+			exit(1);
 		}
 		else
 		{
 			std::cout << "Valid commands: ADD, SEARCH, EXIT. Please try again.\n\n" << std::endl;
 		}
 	}
+	
+	// Contact new_guy;
 
+	// new_guy.printRow();
 	return (0);
 }

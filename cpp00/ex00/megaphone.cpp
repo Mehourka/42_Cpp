@@ -3,9 +3,9 @@
 #include <cctype>
 
 void ft_transform(
-	std::string::iterator it,
-	std::string::iterator last,
-	std::string::iterator dest,
+	string::iterator it,
+	string::iterator last,
+	string::iterator dest,
 	int (*func)(int))
 {
 	while(it != last)

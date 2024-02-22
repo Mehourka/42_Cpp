@@ -15,7 +15,7 @@ all: $(NAME)
 	./$(NAME)
 
 $(NAME): $(SRCS)
-	@$(CC) $(CFLAGS) $(SRCS) -o $@
+	$(CC) $(CFLAGS) $(SRCS) -o $@
 
 clean:
 	@rm -rf $(NAME)

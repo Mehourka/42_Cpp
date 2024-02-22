@@ -1,11 +1,11 @@
 #include "Contact.hpp"
 
 void Contact::initContact(
-	std::string first_name,
-	std::string last_name,
-	std::string nickname,
-	std::string phone_number,
-	std::string secret)
+	string first_name,
+	string last_name,
+	string nickname,
+	string phone_number,
+	string secret)
 {
 	setFirstName(first_name);
 	setLastName(last_name);
@@ -21,21 +21,92 @@ void printCell(std::string str)
 	{
 		str = str.substr(0, 9) + ".";
 	}
-	std::cout << std::setfill('*') << std::left;
-	std::cout << std::setw(10) << str;
+	cout << std::setfill(' ') << std::left;
+	cout << std::setw(10) << str;
 }
 
 void Contact::printRow() const
 {
 	std::stringstream id;
 
-	id << 1;
+	int test;
+
+	test = std::stoi("-123");
+
+
+	id << 1 << test;
 	printCell(id.str());
-	std::cout << " | ";
+	cout << " | ";
 	printCell(getFirstName());
-	std::cout << " | ";
+	cout << " | ";
 	printCell(getLastName());
-	std::cout << " | ";
+	cout << " | ";
 	printCell(getNickname());
-	std::cout << std::endl;
+	cout << std::endl;
 }
+
+bool	Contact::isValid() const
+{
+	if (
+		m_first_name.empty() ||
+		m_last_name.empty() ||
+		m_nickname.empty() ||
+		m_phone_number.empty() ||
+		m_secret.empty()
+	)
+		return false;
+	return true;
+
+}
+
+void		Contact::setFirstName(string str)	
+{
+	m_first_name = str;
+}
+
+void		Contact::setLastName(string str)	
+{
+	m_last_name = str;
+}
+
+void		Contact::setNickname(string str)	
+{
+	m_nickname = str;
+}
+
+void		Contact::setNumber(string str)		
+{
+	m_phone_number = str;
+}
+
+void		Contact::setSecret(string str)		
+{
+	m_secret = str;
+}
+
+std::string	Contact::getFirstName()			const	
+{
+	return m_first_name;
+}
+
+std::string	Contact::getLastName()			const	
+{
+	return m_last_name;
+}
+
+std::string	Contact::getNickname()			const	
+{
+	return m_nickname;
+}
+
+std::string	Contact::getNumber()				const	
+{
+	return m_phone_number;
+}
+
+std::string	Contact::getSecret()				const	
+{
+	return m_secret;
+}
+
+

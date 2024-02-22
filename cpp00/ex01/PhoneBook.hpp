@@ -7,15 +7,15 @@ class PhoneBook
 private:
 	int		m_write_index;
 	Contact	m_contact_list[8];
-	void	MoveIndex() {m_write_index++;}
+	void	moveIndex();
 
 public:
 	PhoneBook() {m_write_index = 0;}
 
 
-	void AddContact();
-	void SearchContact() const {};
-	std::string GetUserInput(std::string prompt) const;
-	Contact	*GetNextContactPtr();
+	void addContact();
+	void searchContact() const {};
+	std::string getUserInput(std::string prompt) const;
+	Contact	*getNextContactPtr();
 
 };
