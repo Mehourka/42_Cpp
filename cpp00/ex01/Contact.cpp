@@ -25,16 +25,11 @@ void printCell(std::string str)
 	cout << std::setw(10) << str;
 }
 
-void Contact::printRow() const
+void Contact::printRow(int idx) const
 {
 	std::stringstream id;
 
-	int test;
-
-	test = std::stoi("-123");
-
-
-	id << 1 << test;
+	id << idx;
 	printCell(id.str());
 	cout << " | ";
 	printCell(getFirstName());
@@ -42,7 +37,7 @@ void Contact::printRow() const
 	printCell(getLastName());
 	cout << " | ";
 	printCell(getNickname());
-	cout << std::endl;
+	cout << " |" << std::endl;
 }
 
 bool	Contact::isValid() const

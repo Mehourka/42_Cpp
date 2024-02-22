@@ -32,6 +32,6 @@ public:
 	string		getNumber()		const;
 	string		getSecret()		const;
 	bool		isValid()		const;
-	void 		printRow() const;
+	void 		printRow(int idx) const;
 
 };
