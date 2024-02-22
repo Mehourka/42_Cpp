@@ -1,6 +1,6 @@
 UNAME_S := $(shell uname -s)
 OS = None
-NAME = usePhoneBook
+NAME = ex02
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
