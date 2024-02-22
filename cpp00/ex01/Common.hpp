@@ -4,9 +4,8 @@
 #include <iomanip>
 #include <sstream>
 #include <cctype>
+#include <limits>
 
 using std::cout;
 using std::cin;
 using std::string;
-
-void check_cin();

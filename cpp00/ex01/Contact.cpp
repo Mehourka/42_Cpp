@@ -14,32 +14,6 @@ void Contact::initContact(
 	setSecret(secret);
 }
 
-void printCell(std::string str)
-{
-	(void)str;
-	if (str.size() > 10)
-	{
-		str = str.substr(0, 9) + ".";
-	}
-	cout << std::setfill(' ') << std::left;
-	cout << std::setw(10) << str;
-}
-
-void Contact::printRow(int idx) const
-{
-	std::stringstream id;
-
-	id << idx;
-	printCell(id.str());
-	cout << " | ";
-	printCell(getFirstName());
-	cout << " | ";
-	printCell(getLastName());
-	cout << " | ";
-	printCell(getNickname());
-	cout << " |" << std::endl;
-}
-
 bool	Contact::isValid() const
 {
 	if (
@@ -51,7 +25,16 @@ bool	Contact::isValid() const
 	)
 		return false;
 	return true;
+}
 
+void	Contact::printInfo() const
+{
+	cout << "\n\nContact Info:\n";
+	cout << "First Name: " << getFirstName() << "\n";
+	cout << "Last Name: " << getLastName() << "\n";
+	cout << "NickName: " << getNickname() << "\n";
+	cout << "Phone Number: " << getNumber() << "\n";
+	cout << "Darkest Secret: " << getSecret() << std::endl;
 }
 
 void		Contact::setFirstName(string str)	
