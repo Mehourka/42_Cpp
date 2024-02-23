@@ -1,8 +1,4 @@
 #include "Zombie.hpp"
-#define Log(x) std::cout << x << std::endl
-
-Zombie  *newZombie(std::string name);
-void    randomChump(std::string name);
 
 int main(void)
 {
@@ -11,12 +7,11 @@ int main(void)
     bob.announce();
 
     // newZombie in the Stack
-    Zombie *carl;
-    carl = newZombie("Carl");
+    Zombie *carl = Zombie::newZombie("Carl");
     carl->announce();
     delete carl;
 
     // Zombie inside function scope
-    randomChump("Bill"); 
+    Zombie::randomChump("Bill"); 
 }
 
