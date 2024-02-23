@@ -1,4 +1,7 @@
-#include "Common.hpp"
+#include <iostream>
+#include <string>
+
+using std::string;
 
 class Zombie
 {

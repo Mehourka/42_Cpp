@@ -1,5 +1,5 @@
 CC	= c++
-#CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
 
 NAME = zombieHord

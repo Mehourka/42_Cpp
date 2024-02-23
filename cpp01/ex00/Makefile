@@ -1,8 +1,7 @@
 CC	= c++
-#CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
-
-NAME = $(notdir $(shell pwd))
+NAME = zombies
 SRCS = $(wildcard *.cpp)
 
 
@@ -20,3 +19,6 @@ clean:
 fclean: clean
 
 re: fclean $(NAME)
+
+leak: re
+	valgrind ./$(NAME)
