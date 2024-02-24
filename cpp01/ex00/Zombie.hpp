@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 
@@ -8,7 +9,7 @@ class Zombie
 private:
     string  nom;
     Zombie(void);
-    
+
 public:
 
     Zombie(string zombie_name);
