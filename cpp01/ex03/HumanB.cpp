@@ -1,18 +1,23 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB(string str)
-    : Human(str){ weapon = NULL;}
+HumanB::HumanB(string name): Human(name)
+{
+     _weapon = NULL;
+}
 
-HumanB::HumanB(string str, Weapon &weapon)
-    : Human(str), weapon(&weapon) {}
+HumanB::HumanB(string name, Weapon &weapon)
+    : Human(name), _weapon(&weapon) {}
 
-void HumanB::setWeapon(Weapon &w) {weapon = &w;}
+void HumanB::setWeapon(Weapon &weapon)
+{
+    _weapon = &weapon;
+}
 
 const string HumanB::getWeaponType()
 {
-    if (!weapon)
+    if (!_weapon)
     {
         return Human::getWeaponType();
     }
-    return weapon->getType();
+    return _weapon->getType();
 }

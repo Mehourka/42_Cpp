@@ -5,14 +5,14 @@
 class Human
 {
 private:
-    string name;
+    string _name;
+	Human();
 
 public:
-	Human();
 	Human(string);
 	~Human();
 
     void attack();
-	virtual const string getWeaponType();
 	string getName();
+	virtual const string getWeaponType();
 };

@@ -8,13 +8,11 @@
 
 int main(void)
 {
-
-
 	Weapon sword = Weapon("Short sword");
 	Weapon club = Weapon("Wooden club");
 
 
-	// This should not work
+	// This one should not work
 	// HumanA anon = HumanA("Anon");
 
 	HumanA andy = HumanA("Andy", sword);
@@ -34,14 +32,4 @@ int main(void)
 	bill.setWeapon(club);
 	bill.attack();
 	brutus.attack();
-
-
-
-
-
-
-
-
-
 }
-

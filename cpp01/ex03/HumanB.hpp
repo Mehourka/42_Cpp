@@ -1,11 +1,10 @@
 #pragma once
-
 #include "Human.hpp"
 
 class HumanB : public Human
 {
 private:
-	Weapon *weapon;
+	Weapon *_weapon;
 
 public:
 	HumanB(string);

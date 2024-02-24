@@ -4,7 +4,7 @@
 class HumanA : public Human
 {
 private:
-	Weapon &weapon;
+	Weapon &_weapon;
 
 public:
 	HumanA(string, Weapon&);

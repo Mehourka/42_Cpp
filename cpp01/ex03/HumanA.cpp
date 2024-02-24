@@ -1,10 +1,10 @@
 #include "HumanA.hpp"
 
 
-HumanA::HumanA(string str, Weapon& weapon)
-    : Human(str), weapon(weapon) {}
+HumanA::HumanA(string name, Weapon& weapon)
+    : Human(name), _weapon(weapon) {}
 
 const string HumanA::getWeaponType()
 {
-    return weapon.getType();
+    return _weapon.getType();
 }

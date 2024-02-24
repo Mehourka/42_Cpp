@@ -1,12 +1,15 @@
 #include "Human.hpp"
 
 Human::Human() {}
-Human::Human(string name): name(name) {}
+Human::Human(string name): _name(name) {}
 Human::~Human() {}
 
-const string Human::getWeaponType(){return "BareHands";}
+string Human::getName() {return _name;}
 
-string Human::getName() {return name;}
+const string Human::getWeaponType()
+{
+    return "Fists";
+}
 
 void Human::attack()
 {
@@ -15,5 +18,3 @@ void Human::attack()
         << " attacks with their "
         << getWeaponType() << std::endl;
 }
-
-
