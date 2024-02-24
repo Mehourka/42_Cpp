@@ -2,7 +2,7 @@ CC	= c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
 
-NAME = zombieHord
+NAME = violence
 SRCS = $(wildcard *.cpp)
 
 
