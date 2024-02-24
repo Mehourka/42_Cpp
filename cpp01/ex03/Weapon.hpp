@@ -6,9 +6,10 @@ class Weapon
 {
 private:
     string type;
-public:
 
+public:
     Weapon();
+    Weapon(string);
     ~Weapon();
 
     const string    &getType();

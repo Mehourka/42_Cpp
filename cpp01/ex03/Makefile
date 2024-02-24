@@ -3,7 +3,12 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
 
 NAME = violence
-SRCS = $(wildcard *.cpp)
+# SRCS = $(wildcard *.cpp)
+SRCS =	main.cpp\
+		Weapon.cpp\
+		Human.cpp\
+		HumanA.cpp\
+		HumanB.cpp
 
 
 all: re
