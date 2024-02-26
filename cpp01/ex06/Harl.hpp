@@ -29,9 +29,7 @@ private:
     void            setLevel(Harl::e_logLevel levelIdx);
     void            setLevel(string level);
     e_logLevel      getLevelIdx(string level);
-    harlFnc         getComplainFnc(Harl::e_logLevel level);
     static string   toLower(string);
-    void            getCurrLevel();
 
 public:
     Harl();

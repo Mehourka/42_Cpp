@@ -46,29 +46,6 @@ void Harl::invalid(void)
         << std::endl;
 }
 
-harlFnc Harl::getComplainFnc(Harl::e_logLevel levelIdx)
-{
-    switch (levelIdx)
-    {
-    case Error:
-        return &Harl::error;
-
-    case Warning:
-        return &Harl::warn;
-
-    case Info:
-        return &Harl::info;
-
-    case Debug:
-        return &Harl::debug;
-
-    default:
-        return NULL;
-    }
-
-    return NULL;
-}
-
 string Harl::toLower(string str)
 {
     for (string::size_type i = 0; i < str.size(); i++)
@@ -94,7 +71,7 @@ Harl::e_logLevel Harl::getLevelIdx(string level)
 
 void Harl::setLevel(string level)
 {
-    m_logLevel = getLevelIdx(level);
+    setLevel(getLevelIdx(level));
 }
 
 void Harl::setLevel(Harl::e_logLevel level)
@@ -102,44 +79,37 @@ void Harl::setLevel(Harl::e_logLevel level)
     m_logLevel = level;
 }
 
-void Harl::getCurrLevel()
-{
-    std::cout << "Current Harl level: " << m_logLevel << std::endl;
-}
-
 void Harl::complain()
 {
     switch (m_logLevel)
-        {
-        case Error:
-            error();
-            break;
-        case Warning:
-            warn();
-            error();
-            break;
-        case Info:
-            info();
-            warn();
-            error();
-            break;
-        case Debug:
-            debug();
-            info();
-            warn();
-            error();
-            break;
+    {
+    case Error:
+        error();
+        break;
+    case Warning:
+        warn();
+        error();
+        break;
+    case Info:
+        info();
+        warn();
+        error();
+        break;
+    case Debug:
+        debug();
+        info();
+        warn();
+        error();
+        break;
 
-        default:
-            invalid();
-            break;
-        }
+    default:
+        invalid();
+        break;
+    }
 }
 
 void Harl::complain(string level)
 {
-    // harlFnc complain_fnc;
-
     setLevel(level);
     complain();
 }
