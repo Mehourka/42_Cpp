@@ -35,13 +35,48 @@ ketchup burger. I really do !"
         <<  std::endl;
 }
 
+string Harl::toLower(string str)
+{
+    for (string::size_type i = 0; i < str.size(); i++)
+    {
+        str[i] = std::tolower((int)str[i]);
+    }
+    return str;
+}
+
+Harl::e_logLevel Harl::getLevelIdx(string level)
+{
+    level = Harl::toLower(level);
+    if (level == "error")
+        return Error;
+    if (level == "warning")
+        return Warning;
+    if (level == "info")
+        return Info;
+    if (level == "debug")
+        return Debug;
+    return Invalid;
+}
+
 harlFnc Harl::getComplainFnc(string level)
 {
-    if (level == "error") return &Harl::error;
-    if (level == "warn") return &Harl::warn;
-    if (level == "info") return &Harl::info;
-    if (level == "debug") return &Harl::debug;
-    return NULL;
+    Harl::e_logLevel levelIdx;
+
+    levelIdx = getLevelIdx(level);
+
+    switch (levelIdx)
+    {
+    case Error:
+        return &Harl::error;
+    case Warning:
+        return &Harl::warn;
+    case Info:
+        return &Harl::info;
+    case Debug:
+        return &Harl::debug;
+    default:
+        return NULL;
+    }
 }
 
 void Harl::complain(string level)
