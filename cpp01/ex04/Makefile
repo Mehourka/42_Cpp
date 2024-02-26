@@ -2,8 +2,8 @@ CC	= c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
 INFILE = tmp/infile.txt
-STR1 = red
-STR2 = blue
+STR1 = cas
+STR2 = X
 
 
 NAME = mySed
@@ -28,4 +28,4 @@ re: fclean $(NAME)
 run: re
 	./$(NAME) $(INFILE) $(STR1) $(STR2)
 leak: re
-	valgrind ./$(NAME)
+	valgrind ./$(NAME) $(INFILE) $(STR1) $(STR2)
