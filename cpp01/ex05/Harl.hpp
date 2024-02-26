@@ -3,19 +3,22 @@
 #include <string>
 using std::string;
 
+class Harl;
+
+typedef void (Harl::*harlFnc)(void);
+
 class Harl
 {
-public:
-    static const int HarlLevelInfo = 2;
-    static const int HarlLevelWarning = 1;
-    static const int HarlLevelError = 0;
 private:
     int m_logLevel;
+    void error(void);
+    void warn(void);
+    void info(void);
+    void debug(void);
+
+    harlFnc getComplainFnc(string level);
+
 public:
-        Harl();
-        void SetLevel(int level);
-        void error(void) const;
-        void warn(void) const;
-        void info(void) const;
-        void debug(void) const;
+    Harl();
+    void complain(string level);
 };

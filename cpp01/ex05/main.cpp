@@ -4,9 +4,12 @@ int main(void)
 {
     Harl harl;
 
-    initHarl();
-    harl.SetLevel(Harl::HarlLevelWarning);
-    harl.Error("Hey there,");
-    harl.Warn("Space Cowbo!");
-    harl.Info("... To be continued");
+    harl.complain("error");
+    harl.complain("warn");
+    harl.complain("info");
+    harl.complain("debug");
+
+    harl.complain("nope");
+    harl.complain("");
+
 }
