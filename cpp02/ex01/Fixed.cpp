@@ -17,6 +17,25 @@ Fixed::~Fixed() {
 	Log("Destructor called");
 }
 
+Fixed::Fixed(int const integer) {
+	_raw_bits = (integer << _frac_width);
+	Log("Int constructor called");
+}
+
+Fixed::Fixed(float const fp) {
+	_raw_bits =  round(fp * (1 << _frac_width));
+	Log("Int constructor called");
+}
+
+float Fixed::toFloat( void ) const
+{
+	return (float) _raw_bits / (1 << _frac_width);
+}
+
+int Fixed::toInt( void ) const
+{
+	return (_raw_bits >> _frac_width);
+}
 
 int	Fixed::getRawBits() const {
 	Log("getRawBits member function called");
@@ -28,6 +47,8 @@ void	Fixed::setRawBits( int const val ) {
 	_raw_bits = val;
 }
 
+
+
 Fixed& Fixed::operator=(Fixed const & rhs) {
 	Log("Copy assignment operator called");
 	this->_raw_bits = rhs.getRawBits();
@@ -35,6 +56,7 @@ Fixed& Fixed::operator=(Fixed const & rhs) {
 }
 
 std::ostream &operator<<(std::ostream & o, Fixed const & rhs){
-    o << rhs.getRawBits();
+    o << rhs.toFloat();
     return o;
 }
+
