@@ -2,8 +2,11 @@ CC	= c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
 
-NAME = fixed_1_0
-SRCS = main.cpp Fixed.cpp
+NAME = fixed_2_0
+SRCS = main.cpp\
+	   Fixed.cpp\
+	   Fixed_overloads.cpp\
+
 
 
 all: re
