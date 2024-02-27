@@ -1,19 +1,21 @@
-#include <iostream>
-#include <string>
-
 #include "Fixed.hpp"
 
 #define Log(x) std::cout << x << std::endl
 
-
 int main(void)
 {
-    Fixed first(5);
-    Fixed s(10);
-    Fixed second = s;
+    Fixed a;
+    Fixed b(a);
+    Fixed c;
 
+    a.setRawBits(4);
+    c.setRawBits(69);
 
-    Fixed sum = first + second;
+    c = b;
 
-    Log(first + second + Fixed(2));
+    b.setRawBits(2);
+
+    std::cout << a.getRawBits() << std::endl;
+    std::cout << b.getRawBits() << std::endl;
+    std::cout << c.getRawBits() << std::endl;
 }

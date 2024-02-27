@@ -1,37 +1,40 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed() {}
-Fixed::Fixed(int value): _n(value){}
+#define Log(x) std::cout << x << std::endl
 
-Fixed::~Fixed() {}
+Fixed::Fixed() {
 
-int Fixed::add(Fixed &that) const{
-
-	return (this->getValue() + that.getValue());
+	_raw_bits = 0;
+	Log("Default constructor called");
 }
 
-int Fixed::add(int num) const{
-
-	return this->getValue() + num;
+Fixed::Fixed(Fixed const & src) {
+	Log("Copy constructor called");
+	*this = src;
 }
 
-int Fixed::getValue() const {
-
-	return _n;
+Fixed::~Fixed() {
+	Log("Destructor called");
 }
+
+
+int	Fixed::getRawBits() const {
+	Log("getRawBits member function called");
+	return _raw_bits;
+}
+
+void	Fixed::setRawBits( int const val ) {
+	Log("setRawBits member function called");
+	_raw_bits = val;
+}
+
 Fixed& Fixed::operator=(Fixed const & rhs) {
-
-	this->_n = rhs.getValue();
+	Log("Copy assignment operator called");
+	this->_raw_bits = rhs.getRawBits();
 	return *this;
 }
 
-Fixed Fixed::operator+(Fixed const & rhs) const {
-
-	return Fixed(this->add(rhs.getValue()));
-}
-
-std::ostream &operator<<(std::ostream &o, Fixed const &rhs) {
-
-	o << rhs.getValue();
-	return o;
+std::ostream &operator<<(std::ostream & o, Fixed const & rhs){
+    o << rhs.getRawBits();
+    return o;
 }
