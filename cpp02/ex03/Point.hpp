@@ -13,13 +13,19 @@ public:
 private:
 	Fixed _x;
 	Fixed _y;
-	// ...
 
 public:
 	Point(const float x, const float y);
 
 	Fixed getX() const;
 	Fixed getY() const;
+	void setX(const Fixed);
+	void setY(const Fixed);
+
+	Point operator + (const Point & other) const;
+	Point operator - (const Point & other) const;
+	Point operator * (const Fixed ) const;
+	Fixed operator * (const Point & other) const; // Dot product
 
 };
 
