@@ -6,6 +6,7 @@ NAME = bsp
 SRCS = main.cpp\
 	   Fixed.cpp\
 	   Fixed_overloads.cpp\
+	   Point.cpp\
 
 
 

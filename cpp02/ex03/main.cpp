@@ -1,21 +1,15 @@
 #include "Fixed.hpp"
+#include "Point.hpp"
 
 #define Log(x) std::cout << (x) << std::endl
 
 int main( void ) {
-    Fixed a;
-    Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-    std::cout << a << std::endl;
-    std::cout << ++a << std::endl;
-    std::cout << a << std::endl;
-    std::cout << a++ << std::endl;
-    std::cout << a << std::endl;
+    Log("This is BSP: \n\n");
+    Point o = Point(0.0, 0.0);
+    Point x = Point(1.67, 1.42);
 
-    std::cout << b << std::endl;
+    Log(o);
+    Log(x);
 
-    std::cout << Fixed::max( a, b ) << std::endl;
-    Fixed c = Fixed::max(a, b);
-    
-    return 0;
 }
