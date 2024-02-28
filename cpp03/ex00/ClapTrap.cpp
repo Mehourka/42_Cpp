@@ -147,13 +147,13 @@ std::ostream &operator<<(std::ostream &o, ClapTrap &clap)
 void ClapTrap::_log(const string str) const
 {
 	std::cout
-		<< _COLOR <<" - [ " << getName() << " ]\033[30m"
+		<< _COLOR <<" - [ " << getName() << " ] \033[30m"
 		<< (str) << "\033[37m" << std::endl;
 }
 
 void ClapTrap::_info(const string str) const
 {
 	std::cout
-		<< _COLOR << " - [ " << getName() << " ]  "
+		<< _COLOR << " - [ " << getName() << " ] "
 		<< "\033[37m" << (str) << "\n" << std::endl;
 }

@@ -34,6 +34,6 @@ string ClapTrap::getModel() const { return _model; }
 string ClapTrap::getFullName() const
 {
 	std::stringstream sstr;
-	sstr << _COLOR << " " << _model << " " << getName() << "\033[37m";
+	sstr << _COLOR << _model << " " << getName() << "\033[37m";
 	return sstr.str();
 }

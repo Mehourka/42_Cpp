@@ -8,8 +8,7 @@ SRCS =	main.cpp\
 		ClapTrap.cpp\
 		ClapTrap_list.cpp\
 		ClapTrap_accessors.cpp\
-		ScavTrap.cpp\
-
+		FragTrap.cpp\
 
 all: re
 

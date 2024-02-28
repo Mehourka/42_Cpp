@@ -1,37 +1,41 @@
 #include "Common.hpp"
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void)
 {
-    ScavTrap steve("Steve"); // Purple
-    ScavTrap stan("Stan"); // Purple
-    stan.setColor("\033[31m");
+    FragTrap frank("Frank"); // Purple
+    // ScavTrap stan("Stan"); // Purple
+    // stan.setColor("\033[31m");
 
     ClapTrap carl("Carl"); // Blue
 
-    // Status
-    std::cout << "\n" << steve << carl << stan << "\n";
+    // // Status
+    // std::cout << "\n" << steve << carl << stan << "\n";
 
-    // Set attacks
-    stan.setAttack(95);
-    carl.setAttack(2);
+    frank.highFivesGuys();
+    frank.attack(carl.getName());
+    std::cout << frank;
 
-    carl.attack(steve.getName());
+    // // Set attacks
+    // stan.setAttack(95);
+    // carl.setAttack(2);
 
-    steve.attack(carl.getName());
-    stan.attack(steve.getName());
-    steve.beRepaired(1);
+    // carl.attack(steve.getName());
 
-    std::cout << steve << carl << stan << "\n";
+    // steve.attack(carl.getName());
+    // stan.attack(steve.getName());
+    // steve.beRepaired(1);
 
-    stan.attack(steve.getName());
-    carl.attack(steve.getName());
-    steve.beRepaired(100);
-    steve.attack(carl.getName());
+    // std::cout << steve << carl << stan << "\n";
+
+    // stan.attack(steve.getName());
+    // carl.attack(steve.getName());
+    // steve.beRepaired(100);
+    // steve.attack(carl.getName());
 
 
-    // Status
-    std::cout << "\n" << steve << carl << stan << "\n";
+    // // Status
+    // std::cout << "\n" << steve << carl << stan << "\n";
 
-    ScavTrap::printTargets();
+    // ScavTrap::printTargets();
 }
