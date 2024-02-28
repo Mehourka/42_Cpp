@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 CFLAGS = -g
 
 
-NAME = fragTrap
+NAME = DiamondTrap
 SRCS =	main.cpp\
 		ClapTrap.cpp\
 		ClapTrap_list.cpp\
