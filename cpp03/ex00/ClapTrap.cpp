@@ -4,48 +4,38 @@ clap_list_t *ClapTrap::targets = NULL;
 
 void ClapTrap::_init()
 {
+	_COLOR = "\033[33m";
+	_model = "ClapTrap";
 	setHitPoints(10);
 	setEnergy(10);
 	setAttack(0);
 	pushTarget();
 }
-void ClapTrap::_log(const string str) const
-{
-	std::cout
-		<< "\033[30m - [ " << _name << " ]  "
-		<< (str) << "\033[37m" << std::endl;
-}
 
-void ClapTrap::_info(const string str) const
-{
-	std::cout
-		<< "\033[30m - [ " << _name << " ]  "
-		<< "\033[37m" << (str) << "\n" << std::endl;
-}
-
+// -------------------- Canonical methods -------------------- //
 ClapTrap::ClapTrap()
 {
-	_log(("Default constructor called : "));
 	_name = "Anon";
 	_init();
+	_log(("ClapTrap Default constructor called : "));
 }
 
 ClapTrap::ClapTrap(string name)
 {
 	_name = getUniqueName(name);
-	_log("String constructor called");
 	_init();
+	_log("ClapTrap String constructor called");
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-	_log("Copy constructor called");
+	_log("ClapTrap Copy constructor called");
 	*this = other;
 }
 
 ClapTrap::~ClapTrap()
 {
-	_log("Destructor called");
+	_log("ClapTrap Destructor called");
 	popTarget(getName());
 }
 
@@ -58,46 +48,9 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 	return *this;
 }
 
-unsigned int ClapTrap::_ensurePositive(int val)
-{
-	return val < 0 ? 0 : val;
-}
 
-ClapTrap *ClapTrap::getTarget(const string &target)
-{
-	// Todo : Actually find the target...
-	return findTarget(target);
-}
 
-// TODO: Cant attack if dead
-// TODO: Add separate function that checks hp and energy, then logs
-
-bool ClapTrap::canAct(ClapTrap * target, string prefix)
-{
-	std::stringstream sstr;
-
-	sstr << prefix;
-	if (!target)
-	{
-		sstr << ": Invalid Target";
-	}
-	else if (getHitPoints() == 0)
-	{
-		sstr << " " << target->getName()
-			<< " : Has 0 Hit Points (dead)";
-	}
-	else if (getEnergy() == 0)
-	{
-		sstr << " " << target->getName()
-			<< " : Has 0 Energy Points";
-	}
-	else
-	{
-		return true;
-	}
-	_info(sstr.str());
-	return false;
-}
+// -------------------- Mandatory Public Actions -------------------- //
 
 void ClapTrap::attack(const std::string &target_name)
 {
@@ -106,8 +59,8 @@ void ClapTrap::attack(const std::string &target_name)
 		return;
 
 	std::stringstream info;
-	info << "ClapTrap " << _name
-		 << " attacks " << target->getName()
+	info << getFullName()
+		 << " attacks " << target->getFullName()
 		 << " causing " << this->getAttack() << " points of damage!";
 	_info(info.str());
 
@@ -138,46 +91,69 @@ void ClapTrap::beRepaired(unsigned int amount)
 	this->setHitPoints(this->getHitPoints() + amount);
 }
 
-void ClapTrap::setHitPoints(int val)
+
+
+// -------------------- Utils -------------------- //
+
+unsigned int ClapTrap::_ensurePositive(int val)
 {
-	_hit_pts = _ensurePositive(val);
+	return val < 0 ? 0 : val;
 }
 
-void ClapTrap::setAttack(int val)
+ClapTrap *ClapTrap::getTarget(const string &target)
 {
-	_attack_dmg = _ensurePositive(val);
+	return findTarget(target);
 }
 
-void ClapTrap::setEnergy(int val)
+bool ClapTrap::canAct(ClapTrap * target, string prefix)
 {
-	_energy_pts = _ensurePositive(val);
+	std::stringstream sstr;
+
+	sstr << prefix;
+	if (!target)
+	{
+		sstr << ": Invalid Target";
+	}
+	else if (getHitPoints() == 0)
+	{
+		sstr << " " << target->getFullName()
+			<< " : Has 0 Hit Points (dead)";
+	}
+	else if (getEnergy() == 0)
+	{
+		sstr << " " << target->getFullName()
+			<< " : Has 0 Energy Points";
+	}
+	else
+	{
+		return true;
+	}
+	_info(sstr.str());
+	return false;
 }
 
-int ClapTrap::getHitPoints() const
-{
-	return _hit_pts;
-}
 
-int ClapTrap::getAttack() const
-{
-	return _attack_dmg;
-}
 
-int ClapTrap::getEnergy() const
-{
-	return _energy_pts;
-}
-
-const string &ClapTrap::getName() const
-{
-	return _name;
-}
-
+// -------------------- Printing / Log -------------------- //
 std::ostream &operator<<(std::ostream &o, ClapTrap &clap)
 {
-	o << "\033[30m - [ " << clap.getName() << " ]\033[32m status: "
+	o << clap.getColor() << " - [ " << clap.getName() << " ] status: "
 	  << " HP: " << clap.getHitPoints()
 	  << " Enrg.: " << clap.getEnergy()
 	  << " Attack: " << clap.getAttack() << std::endl;
 	return o;
+}
+
+void ClapTrap::_log(const string str) const
+{
+	std::cout
+		<< _COLOR <<" - [ " << getName() << " ]\033[30m"
+		<< (str) << "\033[37m" << std::endl;
+}
+
+void ClapTrap::_info(const string str) const
+{
+	std::cout
+		<< _COLOR << " - [ " << getName() << " ]  "
+		<< "\033[37m" << (str) << "\n" << std::endl;
 }

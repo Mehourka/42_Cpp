@@ -1,11 +1,23 @@
 #include "Common.hpp"
 #include "ClapTrap.hpp"
+
+#define RED "\033[31m"
+#define BLUE "\033[34m"
+#define GREEN "\033[32m"
+#define PURPLE "\033[35m"
+
 int main(void)
 {
 	ClapTrap red("Red");
 	ClapTrap blue("Blue");
 	ClapTrap green("Green");
 	ClapTrap red_2("Red");
+
+	// Set Colors
+	red.setColor(RED);
+	blue.setColor(BLUE);
+	green.setColor(GREEN);
+	red_2.setColor(PURPLE);
 
 	// Setting attacks
 	red.setAttack(5);

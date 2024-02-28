@@ -7,6 +7,7 @@ NAME = claptrap
 SRCS =	main.cpp\
 		ClapTrap.cpp\
 		ClapTrap_list.cpp\
+		ClapTrap_accessors.cpp\
 
 
 all: re
