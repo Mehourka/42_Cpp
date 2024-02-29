@@ -13,12 +13,12 @@ protected:
     string _COLOR;
 
 protected:
-    FragTrap();
+    FragTrap();                         // Canonical
 
 public:
-    virtual ~FragTrap();
-    FragTrap(FragTrap &);
-    FragTrap &operator=(FragTrap &);
+    virtual ~FragTrap();                // Canonical
+    FragTrap(FragTrap &);               // Canonical
+    FragTrap &operator=(FragTrap &);    // Canonical
 
     FragTrap(string name);
     void _init();

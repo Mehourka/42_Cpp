@@ -25,14 +25,14 @@ protected:
 
     // Constructors / Desctructor
 protected:
-    ClapTrap(); // Canonical
+    ClapTrap();                             // Canonical
     void _init();
 
 public:
     ClapTrap(string name);
-    ClapTrap(const ClapTrap &);            // Canonical
-    virtual ~ClapTrap();                   // Canonical
-    ClapTrap &operator=(const ClapTrap &); // Canonical
+    ClapTrap(const ClapTrap &);             // Canonical
+    virtual ~ClapTrap();                    // Canonical
+    ClapTrap &operator=(const ClapTrap &);  // Canonical
 
     // Mandatory
 public:
@@ -56,23 +56,22 @@ protected:
     void _info(const string str) const;
     virtual void setHitPoints(int val);
     virtual void setEnergy(int val);
-    virtual int getHitPoints() const;
-    virtual int getAttack() const;
-    virtual int getEnergy() const;
-    virtual string getColor() const;
     virtual void setModel(string);
-    virtual string getModel() const;
 
 protected:
     string getUniqueName(const string) const;
 
 public:
+    virtual int getHitPoints() const;
+    virtual int getAttack() const;
+    virtual int getEnergy() const;
+    virtual string getColor() const;
+    virtual string getModel() const;
     virtual string getFullName() const;
     virtual void setAttack(int val);
     static void printTargets();
     virtual const string &getName() const;
     virtual void setColor(string);
-    friend std::ostream &operator<<(std::ostream &, ClapTrap &);
 };
 
-// std::ostream &operator<<(std::ostream &, ClapTrap &);
+std::ostream &operator<<(std::ostream &, ClapTrap &);

@@ -11,12 +11,12 @@ protected:
     string _COLOR;
 
 protected:
-    DiamondTrap();
+    DiamondTrap();                          // Canonical
 
 public:
-    virtual ~DiamondTrap();
-    DiamondTrap(DiamondTrap &);
-    DiamondTrap &operator=(DiamondTrap &);
+    virtual ~DiamondTrap();                 // Canonical
+    DiamondTrap(DiamondTrap &);             // Canonical
+    DiamondTrap &operator=(DiamondTrap &);  // Canonical
 
     DiamondTrap(string name);
     void _init();

@@ -23,7 +23,6 @@ int main(void)
 	red.setAttack(5);
 	blue.setAttack(4);
 	green.setAttack(5);
-	red_2.setAttack(3);
 
 	// Status
 	std::cout << "\n"

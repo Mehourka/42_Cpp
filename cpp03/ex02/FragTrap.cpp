@@ -12,13 +12,13 @@ void FragTrap::_init()
 	_attack_dmg = 30;
 }
 
-FragTrap::FragTrap() : ClapTrap()
+FragTrap::FragTrap() : ClapTrap()					// Canonical
 {
 	_init();
 	_log(("FragTrap Default constructor called"));
 }
 
-FragTrap::~FragTrap()
+FragTrap::~FragTrap()								// Canonical
 {
 	_log("FragTrap Destructor called");
 }
@@ -36,10 +36,13 @@ FragTrap::FragTrap(string name) : ClapTrap(name)
 
 void FragTrap::highFivesGuys(void)
 {
+	if (!canAct(this, "Can't HighFive"))
+		return;
 	std::stringstream sstr;
 	sstr << getFullName() << " wants a HighFive 🖐️";
-
 	_log(sstr.str());
+
+	this->setEnergy(this->getEnergy() - 1);
 }
 
 void FragTrap::setColor(string color) { _COLOR = color; }

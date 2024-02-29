@@ -52,10 +52,13 @@ void ScavTrap::attack(const std::string &target_name)
 
 void ScavTrap::guardGate()
 {
+	if (!canAct(this, "Can't Gate Keep"))
+		return;
 	std::stringstream sstr;
 	sstr << getFullName() << " est entré en mode Gate Keeper";
-
 	_log(sstr.str());
+	
+	this->setEnergy(this->getEnergy() - 1);
 }
 
 void ScavTrap::setColor(string color) { _COLOR = color; }
