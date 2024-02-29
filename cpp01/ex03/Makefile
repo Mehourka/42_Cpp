@@ -11,7 +11,7 @@ SRCS =	main.cpp\
 		HumanB.cpp
 
 
-all: re
+all: $(NAME)
 
 $(NAME): $(SRCS)
 	@echo Compiling ./$(NAME) ...
@@ -27,4 +27,4 @@ fclean: clean
 re: fclean $(NAME)
 
 leak: re
-	valgrind ./$(NAME)
+	leaks -atExit -- ./$(NAME)

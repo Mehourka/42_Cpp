@@ -10,7 +10,7 @@ NAME = mySed
 # SRCS = $(wildcard *.cpp)
 SRCS =	main.cpp\
 
-all: re
+all: $(NAME)
 
 $(NAME): $(SRCS)
 	@echo Compiling ./$(NAME) ...
@@ -27,5 +27,6 @@ re: fclean $(NAME)
 
 run: re
 	./$(NAME) $(INFILE) $(STR1) $(STR2)
+
 leak: re
-	valgrind ./$(NAME) $(INFILE) $(STR1) $(STR2)
+	leaks -atExit -- ./$(NAME)

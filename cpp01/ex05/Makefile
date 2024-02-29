@@ -6,7 +6,7 @@ NAME = harl_2_0
 SRCS =	main.cpp\
 		Harl.cpp\
 
-all: re
+all: $(NAME)
 
 $(NAME): $(SRCS)
 	@echo Compiling ./$(NAME) ...
@@ -23,5 +23,6 @@ re: fclean $(NAME)
 
 run: re
 	./$(NAME) $(INFILE) $(STR1) $(STR2)
+
 leak: re
-	valgrind ./$(NAME) $(INFILE) $(STR1) $(STR2)
+	leaks -atExit -- ./$(NAME)

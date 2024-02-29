@@ -22,5 +22,6 @@ re: fclean $(NAME)
 
 run: re
 	./$(NAME) $(INFILE) $(STR1) $(STR2)
+
 leak: re
-	valgrind ./$(NAME) $(INFILE) $(STR1) $(STR2)
+	leaks -atExit -- ./$(NAME)
