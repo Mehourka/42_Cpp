@@ -1,12 +1,11 @@
 CC	= c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
-
 NAME = fixed
 SRCS = main.cpp Fixed.cpp
 
 
-all: re
+all: $(NAME)
 
 $(NAME): $(SRCS)
 	@echo Compiling ./$(NAME) ...
@@ -20,3 +19,6 @@ clean:
 fclean: clean
 
 re: fclean $(NAME)
+
+leak:
+	leaks -atExit -- ./$(NAME)

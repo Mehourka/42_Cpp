@@ -6,7 +6,7 @@ NAME = fixed_1_0
 SRCS = main.cpp Fixed.cpp
 
 
-all: re
+all: $(NAME)
 
 $(NAME): $(SRCS)
 	@echo Compiling ./$(NAME) ...
@@ -20,3 +20,6 @@ clean:
 fclean: clean
 
 re: fclean $(NAME)
+
+leak:
+	leaks -atExit -- ./$(NAME)

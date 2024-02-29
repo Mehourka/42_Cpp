@@ -11,7 +11,6 @@ public:
 	Fixed();				 // Canonical
 	Fixed(Fixed const &src); // Canonical
 	virtual ~Fixed();		 // Canonical
-
 	Fixed &operator=(Fixed const &rhs); // Canonical
 
 	int getRawBits(void) const;
