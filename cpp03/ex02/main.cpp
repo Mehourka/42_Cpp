@@ -16,6 +16,10 @@ int main(void)
     frank.attack(carl.getName());
     std::cout << frank;
 
+
+    FragTrap clank(frank);
+
+    std::cout << clank;
     // // Set attacks
     // stan.setAttack(95);
     // carl.setAttack(2);

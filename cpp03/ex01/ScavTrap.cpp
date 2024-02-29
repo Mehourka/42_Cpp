@@ -25,8 +25,23 @@ ScavTrap::~ScavTrap()
 
 ScavTrap::ScavTrap(ScavTrap &other) : ClapTrap(other)
 {
+	*this = other;
 	_log(("ScavTrap Copy constructor called"));
 }
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &other)
+{
+	_name = other._name;
+	setModel("ScavTrap");
+	setColor("\033[35m");
+	setAttack(other.getAttack());
+	setEnergy(other.getEnergy());
+	setHitPoints(other.getHitPoints());
+	
+	_log(("ScavTrap Assignation constructor called"));
+	return *this;
+}
+
 
 ScavTrap::ScavTrap(string name) : ClapTrap(name)
 {
@@ -57,7 +72,7 @@ void ScavTrap::guardGate()
 	std::stringstream sstr;
 	sstr << getFullName() << " est entré en mode Gate Keeper";
 	_log(sstr.str());
-	
+
 	this->setEnergy(this->getEnergy() - 1);
 }
 

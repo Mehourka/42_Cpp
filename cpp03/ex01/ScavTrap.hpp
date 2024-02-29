@@ -13,12 +13,11 @@ protected:
     string _model;
 
 protected:
-    ScavTrap();
-
+    ScavTrap();                             // Canonical
 public:
-    virtual ~ScavTrap();
-    ScavTrap(ScavTrap &);
-    ScavTrap &operator=(ScavTrap &);
+    virtual ~ScavTrap();                    // Canonical
+    ScavTrap(ScavTrap &);                   // Canonical
+    ScavTrap &operator=(const ScavTrap &);  // Canonical
 
     ScavTrap(string name);
     void _init();
