@@ -21,8 +21,6 @@ int ClapTrap::getAttack() const { return _attack_dmg; }
 
 int ClapTrap::getEnergy() const { return _energy_pts; }
 
-const string &ClapTrap::getName() const { return _name; }
-
 void ClapTrap::setColor(string color) { _COLOR = color; }
 
 string ClapTrap::getColor() const { return _COLOR; }
@@ -31,9 +29,11 @@ void ClapTrap::setModel(string model) { _model = model; }
 
 string ClapTrap::getModel() const { return _model; }
 
+const string &ClapTrap::getName() const { return _name; }
+
 string ClapTrap::getFullName() const
 {
 	std::stringstream sstr;
-	sstr << _COLOR << _model << " " << getName() << "\033[37m";
+	sstr << _COLOR << _model << " " << _name << "\033[37m";
 	return sstr.str();
 }

@@ -1,41 +1,21 @@
 #include "Common.hpp"
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
-    FragTrap frank("Frank"); // Purple
-    // ScavTrap stan("Stan"); // Purple
-    // stan.setColor("\033[31m");
+    DiamondTrap dave("Davie");
 
-    ClapTrap carl("Carl"); // Blue
+    ClapTrap dummy("Dummy");
 
-    // // Status
-    // std::cout << "\n" << steve << carl << stan << "\n";
+    // Status
+    std::cout << "\n"<< dave << dummy<< "\n" << std::endl;
 
-    frank.highFivesGuys();
-    frank.attack(carl.getName());
-    std::cout << frank;
+    dave.guardGate();
+    dave.highFivesGuys();
+    dave.whoAmI();
+    dave.attack(dummy.getName());
 
-    // // Set attacks
-    // stan.setAttack(95);
-    // carl.setAttack(2);
+    // Status
+    std::cout << "\n"<< dave << dummy<< "\n" << std::endl;
 
-    // carl.attack(steve.getName());
-
-    // steve.attack(carl.getName());
-    // stan.attack(steve.getName());
-    // steve.beRepaired(1);
-
-    // std::cout << steve << carl << stan << "\n";
-
-    // stan.attack(steve.getName());
-    // carl.attack(steve.getName());
-    // steve.beRepaired(100);
-    // steve.attack(carl.getName());
-
-
-    // // Status
-    // std::cout << "\n" << steve << carl << stan << "\n";
-
-    // ScavTrap::printTargets();
 }

@@ -4,11 +4,14 @@ clap_list_t *ClapTrap::targets = NULL;
 
 void ClapTrap::_init()
 {
-	_COLOR = "\033[33m";
-	_model = "ClapTrap";
+	setColor("\033[33m");
+	setModel("ClapTrap");
 	setHitPoints(10);
+	_hit_pts = 10;
 	setEnergy(10);
+	_energy_pts = 10;
 	setAttack(0);
+	_attack_dmg = 10;
 	pushTarget();
 }
 
@@ -48,8 +51,6 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 	return *this;
 }
 
-
-
 // -------------------- Mandatory Public Actions -------------------- //
 
 void ClapTrap::attack(const std::string &target_name)
@@ -84,14 +85,12 @@ void ClapTrap::beRepaired(unsigned int amount)
 		return;
 	std::stringstream info;
 	info << "Repaired himself, gaining +"
-		<< amount << " Hit Points";
+		 << amount << " Hit Points";
 	_info(info.str());
 
 	this->setEnergy(this->getEnergy() - 1);
 	this->setHitPoints(this->getHitPoints() + amount);
 }
-
-
 
 // -------------------- Utils -------------------- //
 
@@ -105,7 +104,7 @@ ClapTrap *ClapTrap::getTarget(const string &target)
 	return findTarget(target);
 }
 
-bool ClapTrap::canAct(ClapTrap * target, string prefix)
+bool ClapTrap::canAct(ClapTrap *target, string prefix)
 {
 	std::stringstream sstr;
 
@@ -117,12 +116,12 @@ bool ClapTrap::canAct(ClapTrap * target, string prefix)
 	else if (getHitPoints() == 0)
 	{
 		sstr << " " << target->getFullName()
-			<< " : Has 0 Hit Points (dead)";
+			 << " : Has 0 Hit Points (dead)";
 	}
 	else if (getEnergy() == 0)
 	{
 		sstr << " " << target->getFullName()
-			<< " : Has 0 Energy Points";
+			 << " : Has 0 Energy Points";
 	}
 	else
 	{
@@ -131,8 +130,6 @@ bool ClapTrap::canAct(ClapTrap * target, string prefix)
 	_info(sstr.str());
 	return false;
 }
-
-
 
 // -------------------- Printing / Log -------------------- //
 std::ostream &operator<<(std::ostream &o, ClapTrap &clap)
@@ -147,13 +144,14 @@ std::ostream &operator<<(std::ostream &o, ClapTrap &clap)
 void ClapTrap::_log(const string str) const
 {
 	std::cout
-		<< _COLOR <<" - [ " << getName() << " ] \033[30m"
+		<< getColor() << " - [ " << getName() << " ] \033[30m"
 		<< (str) << "\033[37m" << std::endl;
 }
 
 void ClapTrap::_info(const string str) const
 {
 	std::cout
-		<< _COLOR << " - [ " << getName() << " ] "
-		<< "\033[37m" << (str) << "\n" << std::endl;
+		<< getColor() << " - [ " << getName() << " ] "
+		<< "\033[37m" << (str) << "\n"
+		<< std::endl;
 }
