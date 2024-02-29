@@ -7,11 +7,8 @@ void ClapTrap::_init()
 	setColor("\033[33m");
 	setModel("ClapTrap");
 	setHitPoints(10);
-	// _hit_pts = 10;
 	setEnergy(10);
-	// _energy_pts = 10;
 	setAttack(0);
-	// _attack_dmg = 0;
 	pushTarget();
 }
 
@@ -32,8 +29,8 @@ ClapTrap::ClapTrap(string name)
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-	_log("ClapTrap Copy constructor called");
 	*this = other;
+	_log("ClapTrap Copy constructor called");
 }
 
 ClapTrap::~ClapTrap()

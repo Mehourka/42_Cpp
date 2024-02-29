@@ -10,7 +10,7 @@ SRCS =	main.cpp\
 		ClapTrap_accessors.cpp\
 		FragTrap.cpp\
 
-all: re
+all: $(NAME)
 
 $(NAME): $(SRCS)
 	@echo Compiling ./$(NAME) ...

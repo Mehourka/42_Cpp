@@ -6,9 +6,6 @@ class ScavTrap : virtual public ClapTrap
 {
 protected:
     // string _name;
-    int _hit_pts;
-    int _energy_pts;
-    int _attack_dmg;
     string _COLOR;
     string _model;
 

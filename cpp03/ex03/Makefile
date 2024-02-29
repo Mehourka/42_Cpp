@@ -12,7 +12,7 @@ SRCS =	main.cpp\
 		ScavTrap.cpp\
 		DiamondTrap.cpp\
 
-all: re
+all: $(NAME)
 
 $(NAME): $(SRCS)
 	@echo Compiling ./$(NAME) ...
