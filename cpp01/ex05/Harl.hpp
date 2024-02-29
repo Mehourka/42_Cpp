@@ -20,7 +20,6 @@ private:
         Invalid
     };
 
-    int m_logLevel;
     void error(void);
     void warn(void);
     void info(void);

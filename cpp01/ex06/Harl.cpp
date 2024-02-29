@@ -58,14 +58,15 @@ string Harl::toLower(string str)
 Harl::e_logLevel Harl::getLevelIdx(string level)
 {
     level = Harl::toLower(level);
-    if (level == "error")
-        return Error;
-    if (level == "warning")
-        return Warning;
-    if (level == "info")
-        return Info;
-    if (level == "debug")
-        return Debug;
+
+    string commands[4] = {"error", "warning", "info", "debug"};
+    Harl::e_logLevel logLvl[4] = {Error, Warning, Info, Debug};
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (level == commands[i])
+            return logLvl[i];
+    }
     return Invalid;
 }
 

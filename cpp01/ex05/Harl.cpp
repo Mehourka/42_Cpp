@@ -21,7 +21,7 @@ void Harl::info(void)
 {
     std::cout
         << "[Info]\t  I cannot believe adding extra bacon costs more money. You didn’t put\
-enough bacon in my burger ! If you did, I wouldn’t be asking for more !"
+enough bacon in my burger ! If you did, I wouldn't be asking for more !"
         <<  std::endl;
 }
 
@@ -47,14 +47,15 @@ string Harl::toLower(string str)
 Harl::e_logLevel Harl::getLevelIdx(string level)
 {
     level = Harl::toLower(level);
-    if (level == "error")
-        return Error;
-    if (level == "warning")
-        return Warning;
-    if (level == "info")
-        return Info;
-    if (level == "debug")
-        return Debug;
+
+    string commands[4] = {"error", "warning", "info", "debug"};
+    Harl::e_logLevel logLvl[4] = {Error, Warning, Info, Debug};
+
+    for (int i = 0; i < 4; i++)
+    {
+        if (level == commands[i])
+            return logLvl[i];
+    }
     return Invalid;
 }
 
