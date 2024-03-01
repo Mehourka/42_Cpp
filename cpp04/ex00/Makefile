@@ -1,16 +1,8 @@
 CC	= c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
-CFLAGS = -g
-
 
 NAME = diamondTrap
-SRCS =	main.cpp\
-		ClapTrap.cpp\
-		ClapTrap_list.cpp\
-		ClapTrap_accessors.cpp\
-		FragTrap.cpp\
-		ScavTrap.cpp\
-		DiamondTrap.cpp\
+SRCS =	main.cpp	Animal.cpp	Cat.cpp Dog.cpp
 
 all: $(NAME)
 

@@ -1,11 +1,10 @@
-#include <iostream>
-#include <string>
-
-#define Log(x) std::cout << x << std::endl
-
+#include "Common.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
 
 int main(void)
 {
-    std::string str = "Hello World!";
-    Log(str);
+    Animal A;
+    Cat C;
+    Dog D;
 }
