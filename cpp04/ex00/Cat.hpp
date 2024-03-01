@@ -12,7 +12,8 @@ public:
     Cat(const Cat &);                   //Canonical
     Cat & operator = (const Cat &);     //Canonical
 
-    void makeSound();
+    void makeSound() const;
+    std::string getType() const;
 };
 
 // std::ostream &operator<<(std::ostream &, Cat &);

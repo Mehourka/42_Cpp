@@ -12,7 +12,8 @@ public:
     Dog(const Dog &);               //Canonical
     Dog & operator = (const Dog &); //Canonical
 
-    void makeSound();
+    void makeSound() const;
+    std::string getType() const;
 };
 
 // std::ostream &operator<<(std::ostream &, Dog &);

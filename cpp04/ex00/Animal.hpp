@@ -8,14 +8,14 @@ protected:
 
 public:
     Animal();                               //Canonical
-    ~Animal();                              //Canonical
+    virtual ~Animal();                              //Canonical
     Animal(const Animal &);                 //Canonical
     Animal & operator = (const Animal &);   //Canonical
 
-    void makeSound();
+    virtual void makeSound() const;
 
 public:
-    std::string getType() const;
+    virtual std::string getType() const;
 };
 
 std::ostream &operator<<(std::ostream &, Animal &);

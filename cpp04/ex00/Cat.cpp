@@ -1,6 +1,6 @@
 #include "Cat.hpp"
 
-Cat::Cat()
+Cat::Cat(): _type("Cat")
 {
     Log( "Cat Default Constructor called");
 }
@@ -23,11 +23,15 @@ Cat &Cat::operator=(const Cat &other)
     return *this;
 }
 
+std::string Cat::getType() const{
+    return _type;
+}
+
 // Cat::Cat(string name)
 // {
 // }
 
-void Cat::makeSound()
+void Cat::makeSound() const
 {
     std::cout << "* Cat sound *" << std::endl;
 }

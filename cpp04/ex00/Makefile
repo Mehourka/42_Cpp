@@ -1,7 +1,7 @@
 CC	= c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
-NAME = diamondTrap
+NAME = polymorphisme
 SRCS =	main.cpp	Animal.cpp	Cat.cpp Dog.cpp
 
 all: $(NAME)

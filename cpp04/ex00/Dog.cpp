@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog()
+Dog::Dog(): _type("Dog")
 {
     Log("Dog Default Constructor called");
 }
@@ -26,16 +26,13 @@ Dog &Dog::operator=(const Dog &other)
     return *this;
 }
 
-// Dog::Dog(string name)
-// {
-// }
+std::string Dog::getType() const{
+    return _type;
+}
 
-void Dog::makeSound()
+
+void Dog::makeSound() const
 {
     std::cout << "* Dog sound *" << std::endl;
 }
 
-// std::ostream &operator<<(std::ostream &o, Dog &other)
-// {
-// 	return o;
-// }
