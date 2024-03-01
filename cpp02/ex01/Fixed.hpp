@@ -9,13 +9,14 @@ private:
 	static const int _frac_width = 8;
 
 public:
-	Fixed();				 // Canonical
-	Fixed(Fixed const &); // Canonical
+	Fixed();				 			// Canonical
+	Fixed(Fixed const &); 				// Canonical
+	virtual ~Fixed();		 			// Canonical
+	Fixed &operator=(Fixed const &rhs); // Canonical
+	
 	Fixed(int const);
 	Fixed(float const);
-	virtual ~Fixed();		 // Canonical
 
-	Fixed &operator=(Fixed const &rhs); // Canonical
 
 	int getRawBits(void) const;
 	void setRawBits(int const raw);
