@@ -5,10 +5,11 @@ Animal::Animal(): _type("Animal")
    std::cout << GRAY << "Animal Default Constructor called" << std::endl;
 }
 
-Animal::~Animal()
+Animal::Animal(const string &type): _type(type)
 {
-   std::cout << GRAY << "Animal Default Destructor called" << std::endl;
+    Log("Animal String Constructor called");
 }
+
 
 Animal::Animal(const Animal &other)
 {
@@ -23,9 +24,11 @@ Animal &Animal::operator=(const Animal &other)
     return *this;
 }
 
-// Animal::Animal(string name)
-// {
-// }
+Animal::~Animal()
+{
+   std::cout << GRAY << "Animal Default Destructor called" << std::endl;
+}
+
 
 void Animal::makeSound() const
 {

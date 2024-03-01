@@ -3,8 +3,6 @@
 
 class Dog: public Animal
 {
-protected:
-    std::string _type;
 
 public:
     Dog();                          //Canonical
@@ -13,7 +11,6 @@ public:
     Dog & operator = (const Dog &); //Canonical
 
     void makeSound() const;
-    std::string getType() const;
 };
 
 // std::ostream &operator<<(std::ostream &, Dog &);

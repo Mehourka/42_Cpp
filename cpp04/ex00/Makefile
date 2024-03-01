@@ -2,7 +2,8 @@ CC	= c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
 NAME = polymorphisme
-SRCS =	main.cpp	Animal.cpp	Cat.cpp Dog.cpp
+SRCS =	main.cpp Animal.cpp Cat.cpp Dog.cpp\
+		WrongAnimal.cpp WrongCat.cpp\
 
 all: $(NAME)
 

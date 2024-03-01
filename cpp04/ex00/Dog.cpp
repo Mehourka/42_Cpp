@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog(): _type("Dog")
+Dog::Dog(): Animal("Dog")
 {
     Log("Dog Default Constructor called");
 }
@@ -26,13 +26,7 @@ Dog &Dog::operator=(const Dog &other)
     return *this;
 }
 
-std::string Dog::getType() const{
-    return _type;
-}
-
-
 void Dog::makeSound() const
 {
     std::cout << "* Dog sound *" << std::endl;
 }
-
