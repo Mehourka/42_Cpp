@@ -2,7 +2,7 @@
 
 Animal::Animal() : _type("Animal")
 {
-    Log("Animal Default Constructor called");
+    Log("Animal Default Constructor called\n");
 }
 
 Animal::Animal(const string &type) : _type(type)
@@ -25,12 +25,12 @@ Animal &Animal::operator=(const Animal &other)
 
 Animal::~Animal()
 {
-    Log("Animal Default Destructor called");
+    Log("Animal Default Destructor called\n");
 }
 
 void Animal::makeSound() const
 {
-    Log("* Animal sound *");
+    LogInfo("* Animal sound *");
 }
 
 std::string Animal::getType() const

@@ -2,7 +2,7 @@
 
 Dog::Dog() : Animal("Dog")
 {
-    Log("Dog Default Constructor called");
+    Log("Dog Default Constructor called\n");
 }
 
 Dog::~Dog()
@@ -13,7 +13,7 @@ Dog::~Dog()
 Dog::Dog(const Dog &other) : Animal(other)
 {
     *this = other;
-    Log("Dog Copy Constructor called");
+    Log("Dog Copy Constructor called\n");
 }
 
 Dog &Dog::operator=(const Dog &other)

@@ -3,7 +3,7 @@
 WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {
     _type = "WrongCat";
-    Log("WrongCat Default Constructor called");
+    Log("WrongCat Default Constructor called\n");
 }
 
 WrongCat::~WrongCat()
@@ -14,7 +14,7 @@ WrongCat::~WrongCat()
 WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other)
 {
     *this = other;
-    Log("WrongCat Copy Constructor called");
+    Log("WrongCat Copy Constructor called\n");
 }
 
 WrongCat &WrongCat::operator=(const WrongCat &other)

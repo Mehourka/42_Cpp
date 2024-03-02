@@ -2,7 +2,7 @@
 
 Cat::Cat() : Animal("Cat")
 {
-    Log("Cat Default Constructor called");
+    Log("Cat Default Constructor called\n");
 }
 
 Cat::~Cat()
@@ -13,7 +13,7 @@ Cat::~Cat()
 Cat::Cat(const Cat &other) : Animal(other)
 {
     *this = other;
-    Log("Cat Copy Constructor called");
+    Log("Cat Copy Constructor called\n");
 }
 
 Cat &Cat::operator=(const Cat &other)
