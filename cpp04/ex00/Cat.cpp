@@ -1,16 +1,16 @@
 #include "Cat.hpp"
 
-Cat::Cat(): Animal("Cat")
+Cat::Cat() : Animal("Cat")
 {
-    Log( "Cat Default Constructor called");
+    Log("Cat Default Constructor called");
 }
 
 Cat::~Cat()
 {
-    Log ("Cat Default Destructor called");
+    Log("Cat Default Destructor called");
 }
 
-Cat::Cat(const Cat &other)
+Cat::Cat(const Cat &other) : Animal(other)
 {
     *this = other;
     Log("Cat Copy Constructor called");

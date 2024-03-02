@@ -1,16 +1,17 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat(): WrongAnimal("WrongCat")
+WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {
-    Log( "WrongCat Default Constructor called");
+    _type = "WrongCat";
+    Log("WrongCat Default Constructor called");
 }
 
 WrongCat::~WrongCat()
 {
-    Log ("WrongCat Default Destructor called");
+    Log("WrongCat Default Destructor called");
 }
 
-WrongCat::WrongCat(const WrongCat &other)
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other)
 {
     *this = other;
     Log("WrongCat Copy Constructor called");

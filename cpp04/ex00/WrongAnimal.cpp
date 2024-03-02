@@ -1,11 +1,11 @@
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal(): _type("WrongAnimal")
+WrongAnimal::WrongAnimal() : _type("WrongAnimal")
 {
-   std::cout << GRAY << "WrongAnimal Default Constructor called" << std::endl;
+    std::cout << GRAY << "WrongAnimal Default Constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(const string &type): _type(type)
+WrongAnimal::WrongAnimal(const string &type) : _type(type)
 {
     Log("WrongAnimal String Constructor called");
 }
@@ -25,22 +25,21 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
 
 WrongAnimal::~WrongAnimal()
 {
-   std::cout << GRAY << "WrongAnimal Default Destructor called" << std::endl;
+    std::cout << GRAY << "WrongAnimal Default Destructor called" << std::endl;
 }
-
-
 
 void WrongAnimal::makeSound() const
 {
     std::cout << "* WrongAnimal sound *" << std::endl;
 }
 
-std::string WrongAnimal::getType() const{
+std::string WrongAnimal::getType() const
+{
     return _type;
 }
 
-std::ostream &operator<<(std::ostream &o, WrongAnimal & WrongAnimal)
+std::ostream &operator<<(std::ostream &o, const WrongAnimal &WrongAnimal)
 {
-    std::cout << WrongAnimal.getType() << std::endl;
-	return o;
+    o << WrongAnimal.getType() << std::endl;
+    return o;
 }

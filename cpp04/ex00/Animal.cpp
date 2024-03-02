@@ -1,46 +1,45 @@
 #include "Animal.hpp"
 
-Animal::Animal(): _type("Animal")
+Animal::Animal() : _type("Animal")
 {
-   std::cout << GRAY << "Animal Default Constructor called" << std::endl;
+    Log("Animal Default Constructor called");
 }
 
-Animal::Animal(const string &type): _type(type)
+Animal::Animal(const string &type) : _type(type)
 {
     Log("Animal String Constructor called");
 }
 
-
 Animal::Animal(const Animal &other)
 {
     *this = other;
-    std::cout << GRAY << "Animal Copy Constructor called" << std::endl;
+    Log("Animal Copy Constructor called");
 }
 
 Animal &Animal::operator=(const Animal &other)
 {
-    std::cout << GRAY << "Animal Assignation Constructor called" << std::endl;
+    Log("Animal Assignation Constructor called");
     _type = other.getType();
     return *this;
 }
 
 Animal::~Animal()
 {
-   std::cout << GRAY << "Animal Default Destructor called" << std::endl;
+    Log("Animal Default Destructor called");
 }
-
 
 void Animal::makeSound() const
 {
-    std::cout << "* Animal sound *" << std::endl;
+    Log("* Animal sound *");
 }
 
-std::string Animal::getType() const{
+std::string Animal::getType() const
+{
     return _type;
 }
 
-std::ostream &operator<<(std::ostream &o, Animal & animal)
+std::ostream &operator<<(std::ostream &o, const Animal &animal)
 {
-    std::cout << animal.getType() << std::endl;
-	return o;
+    o << animal.getType() << std::endl;
+    return o;
 }

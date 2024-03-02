@@ -1,6 +1,6 @@
 #include "Dog.hpp"
 
-Dog::Dog(): Animal("Dog")
+Dog::Dog() : Animal("Dog")
 {
     Log("Dog Default Constructor called");
 }
@@ -8,14 +8,12 @@ Dog::Dog(): Animal("Dog")
 Dog::~Dog()
 {
     Log("Dog Default Destructor called");
-    
 }
 
-Dog::Dog(const Dog &other)
+Dog::Dog(const Dog &other) : Animal(other)
 {
     *this = other;
     Log("Dog Copy Constructor called");
-
 }
 
 Dog &Dog::operator=(const Dog &other)

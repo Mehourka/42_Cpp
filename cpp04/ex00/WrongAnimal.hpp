@@ -5,19 +5,17 @@ class WrongAnimal
 {
 protected:
     std::string _type;
+    WrongAnimal(const string &);
 
 public:
-    WrongAnimal();                               //Canonical
-    virtual ~WrongAnimal();                      //Canonical
-    WrongAnimal(const WrongAnimal &);                 //Canonical
-    WrongAnimal & operator = (const WrongAnimal &);   //Canonical
-    WrongAnimal (const string &);
+    WrongAnimal();                               // Canonical
+    virtual ~WrongAnimal();                      // Canonical
+    WrongAnimal(const WrongAnimal &);            // Canonical
+    WrongAnimal &operator=(const WrongAnimal &); // Canonical
 
-
+public:
     void makeSound() const;
-
-public:
     std::string getType() const;
 };
 
-std::ostream &operator<<(std::ostream &, WrongAnimal &);
+std::ostream &operator<<(std::ostream &, const WrongAnimal &);
