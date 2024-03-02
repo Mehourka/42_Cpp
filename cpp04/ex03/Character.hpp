@@ -3,14 +3,29 @@
 
 class Character : public ICharacter
 {
-public:
-	ICharacter();							   // Canonical
-	ICharacter(const ICharacter &);			   // Canonical
-	ICharacter &operator=(const ICharacter &); // Canonical
-	~ICharacter();							   // Cannonical - Interface
+private:
+	static const int	_inventory_size = 4;
+	std::string _name;
+	AMateria	*_inventory[Character::_inventory_size];
 
-	std::string const &getName() const = 0;	   // Interface
-	void equip(AMateria *m) = 0;			   // Interface
-	void unequip(int idx) = 0;				   // Interface
-	void use(int idx, ICharacter &target) = 0; // Interface
+private:
+	Character();							   // Canonical
+public:
+	Character(const std::string &);
+	Character(const Character &);			   // Canonical
+	Character &operator=(const Character &); // Canonical
+	~Character();							   // Cannonical - Interface
+
+
+	std::string const &getName() const;	   // Interface
+	void equip(AMateria *m);			   // Interface
+	void unequip(int idx);				   // Interface
+	void use(int idx, ICharacter &target); // Interface
+
+	void printInventory() const;
+
+
+
 };
+
+std::ostream & operator << (std::ostream &, const Character &);

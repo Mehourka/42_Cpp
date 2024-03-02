@@ -4,9 +4,12 @@ CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 NAME = Materia
 SRCS =	main.cpp \
 		AMateria.cpp \
+		AMateria_list.cpp\
 		Ice.cpp\
 		Cure.cpp\
-		
+		Character.cpp\
+
+
 
 all: $(NAME)
 
