@@ -1,0 +1,26 @@
+CC	= c++
+CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
+
+NAME = polymorphisme
+SRCS =	main.cpp Animal.cpp Cat.cpp Dog.cpp\
+		WrongAnimal.cpp WrongCat.cpp\
+		Brain.cpp\
+
+all: $(NAME)
+
+$(NAME): $(SRCS)
+	@echo Compiling ./$(NAME) ...
+	$(CC) $(CFLAGS) -o $@ $(SRCS)
+	@echo "Done !\n"
+
+clean:
+	@echo Deleting ./$(NAME)
+	@rm -rf $(NAME)
+
+fclean: clean
+
+re: fclean $(NAME)
+
+leak: re
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
+# leaks --atExit -- ./$(NAME)
