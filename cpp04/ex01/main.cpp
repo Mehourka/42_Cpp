@@ -12,7 +12,7 @@ int main(void)
 
     // Populate Table
     std::cout << "\nCreating Animal table of size : " << TABLE_SIZE << std::endl;
-    for(int i = 0; i < TABLE_SIZE; i++)
+    for (int i = 0; i < TABLE_SIZE; i++)
     {
         if (i <= (TABLE_SIZE / 2) - 1)
             table[i] = new Dog();
@@ -21,9 +21,8 @@ int main(void)
     }
     // Delete table ANIMALS
     std::cout << "Deleting Animal table" << std::endl;
-    for(int i = 0; i < TABLE_SIZE; i++)
+    for (int i = 0; i < TABLE_SIZE; i++)
         delete table[i];
-
 
     // Brain Deep Copy Test
     if (false) // Switch to true
@@ -45,5 +44,4 @@ int main(void)
         delete catA;
         delete catB;
     }
-
 }

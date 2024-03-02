@@ -4,12 +4,12 @@
 class Brain
 {
 public:
-	Brain();						 // Canonical
-	virtual ~Brain();				 // Canonical
-	Brain(const Brain &);			 // Canonical
-	Brain &operator=(const Brain &); // Canonical
+	Brain();
+	virtual ~Brain();
+	Brain(const Brain &);
+	Brain & operator = (const Brain &);
 
-	const static int capacity = 100;
+	const static int capacity= 100;
 
 private:
 	std::string _ideas[Brain::capacity];
@@ -20,4 +20,5 @@ protected:
 public:
 	void printIdeas() const;
 	void addIdea(int idx, const std::string &idea);
+
 };
