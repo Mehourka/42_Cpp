@@ -7,7 +7,7 @@
 
 int main(void)
 {
-    // Create Table
+    // // Create Table
     Animal *table[TABLE_SIZE];
 
     // Populate Table
@@ -43,5 +43,38 @@ int main(void)
 
         delete catA;
         delete catB;
+    }
+
+    // Copy operation does not leak
+    if (false)
+    {
+        Dog *i = new Dog();
+        Dog *j = new Dog();
+
+        i->addIdea(1, "noLeak");
+        j->addIdea(1, "Leak ?");
+
+        *j = *i;
+        i->printIdeas();
+        j->printIdeas();
+
+        delete i;
+        delete j;
+
+        Cat *x = new Cat();
+        Cat *y = new Cat();
+
+        x->addIdea(1, "noLeak");
+        y->addIdea(1, "Leak ?");
+
+        *y = *x;
+        x->printIdeas();
+        y->printIdeas();
+
+        delete x;
+        delete y;
+
+
+        return 0;
     }
 }

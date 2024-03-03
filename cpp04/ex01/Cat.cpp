@@ -22,6 +22,7 @@ Cat &Cat::operator=(const Cat &other)
 {
     Log("Cat Assignation Constructor called");
     _type = other.getType();
+    delete this->_brain;
     this->_brain = new Brain(*other._brain);
     return *this;
 }
