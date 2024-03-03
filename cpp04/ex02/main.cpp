@@ -12,10 +12,12 @@ int main(void)
     // AAnimal *nope = new AAnimal();
     // std::cout << nope->getType() << std::endl;
 
-    Cat *cat = new Cat();
-    Dog *dog = new Dog();
+    AAnimal *cat = new Cat();
+    AAnimal *dog = new Dog();
 
     std::cout << *cat << *dog << std::endl;
+    cat->makeSound();
+    dog->makeSound();
 
     delete cat;
     delete dog;
