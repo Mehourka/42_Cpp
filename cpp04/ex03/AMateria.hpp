@@ -15,7 +15,7 @@ protected:
 	ICharacter		*_owner;
 	static m_list_t	*materiaList;
 
-
+// List utils
 protected:
 	void pushMateria();
 	void popMateria(AMateria *);
@@ -26,17 +26,15 @@ public:
 	virtual ~AMateria();						// Canonical
 	AMateria();									// Canonical
 	AMateria(const AMateria &other);			// Canonical
-	AMateria &operator=(const AMateria &other); // Canonical
+	AMateria &operator=(const AMateria &other);	// Canonical
 
-	// ...
-	std::string const &getType() const; // Returns the materia type
+	std::string const &getType() const; 		// Mandatory
 
-	virtual AMateria *clone() const = 0;
-	virtual void use(ICharacter& target);
-	ICharacter * getOwner() const;
+	virtual AMateria *clone() const = 0;		// Mandatory
+	virtual void use(ICharacter& target);		// Mandatory
+
 	void setOwner(ICharacter *);
-
-	AMateria & getItem(int idx);
+	ICharacter * getOwner() const;
 
 	static void deleteUnequipedMaterias();
 	static void printMateriaList();
