@@ -18,7 +18,8 @@ Character::Character(const std::string &name) : _name(name)
 Character::Character(const Character &other)
 {
 	Log("Character Copy Constr. called");
-
+	for (int i = 0; i < Character::_inventory_size; i++)
+		_inventory[i] = NULL;
 	*this = other;
 }
 

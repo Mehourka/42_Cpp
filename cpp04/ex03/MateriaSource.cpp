@@ -10,6 +10,8 @@ MateriaSource::MateriaSource()
 MateriaSource::MateriaSource(const MateriaSource &other)
 {
 	Log("MateriaSource Copy Constructor called");
+	for (int i = 0; i < MateriaSource::Capacity; i++)
+		_slots[i] = NULL;
 	*this = other;
 }
 

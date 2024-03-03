@@ -1,6 +1,5 @@
-CC	= c++
-CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
-CFlags += -g
+CC	= g++
+CFLAGS = -g -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
 NAME = Materia
 SRCS =	main.cpp \
@@ -32,5 +31,5 @@ run: re
 	./$(NAME)
 
 leak: re
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all  --tool=memcheck --track-origins=yes ./$(NAME)
 # leaks --atExit -- ./$(NAME)

@@ -1,6 +1,6 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria()
+AMateria::AMateria(): _owner(NULL)
 {
 	Log("AMateria Default Constr. called");
 	pushMateria();
@@ -12,7 +12,7 @@ AMateria::AMateria(const std::string &type) : _type(type), _owner(NULL)
 	pushMateria();
 }
 
-AMateria::AMateria(const AMateria &other)
+AMateria::AMateria(const AMateria &other): _owner(NULL)
 {
 	Log("AMateria Copy Constr. called");
 	*this = other;
