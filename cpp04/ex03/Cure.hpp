@@ -13,5 +13,3 @@ public:
 	Cure* clone() const;
 	void use(ICharacter& target);
 };
-
-typedef Cure cure;

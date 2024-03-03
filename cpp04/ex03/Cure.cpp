@@ -1,6 +1,6 @@
 #include "Cure.hpp"
 
-Cure::Cure() : AMateria("Cure")
+Cure::Cure() : AMateria("cure")
 {
 	Log("Cure Def. Constr. called");
 
@@ -18,7 +18,6 @@ Cure::Cure(const Cure &other) : AMateria(other)
 Cure &Cure::operator=(const Cure &)
 {
 	Log("Cure Assign. Override called");
-	// Deep copy here
 	return *this;
 }
 

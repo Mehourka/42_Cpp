@@ -11,7 +11,5 @@ public:
 
 public:
 	Ice *clone() const;
-	void use(ICharacter& target);
+	void use(ICharacter &target);
 };
-
-typedef Ice ice;

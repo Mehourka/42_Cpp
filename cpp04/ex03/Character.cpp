@@ -1,25 +1,28 @@
 #include "Character.hpp"
 #include "AMateria.hpp"
 
-Character::Character(): _name("Anon")
+Character::Character() : _name("Anon")
 {
 	Log("Character Def. Constr. called");
+	for (int i = 0; i < Character::_inventory_size; i++)
+		_inventory[i] = NULL;
 }
 
-Character::Character(const std::string & name): _name(name)
+Character::Character(const std::string &name) : _name(name)
 {
 	Log("Character Str. Constr. called");
-
+	for (int i = 0; i < Character::_inventory_size; i++)
+		_inventory[i] = NULL;
 }
 
-Character::Character(const Character & other)
+Character::Character(const Character &other)
 {
 	Log("Character Copy Constr. called");
 
 	*this = other;
 }
 
-Character & Character::operator=(const Character & other)
+Character &Character::operator=(const Character &other)
 {
 
 	AMateria *otherItem;
@@ -42,14 +45,15 @@ Character::~Character()
 	deleteInventory();
 }
 
-std::string const & Character::getName() const
+std::string const &Character::getName() const
 {
 	return _name;
 }
 
 void Character::equip(AMateria *m)
 {
-	if (!m) return;
+	if (!m)
+		return;
 
 	if (m->getOwner() != NULL)
 	{
@@ -59,7 +63,7 @@ void Character::equip(AMateria *m)
 
 	for (int i = 0; i < Character::_inventory_size; i++)
 	{
-		if(!_inventory[i])
+		if (!_inventory[i])
 		{
 			std::cout << getName() << " equiped " << m->getType() << std::endl;
 			m->setOwner(this);
@@ -97,13 +101,13 @@ void Character::use(int idx, ICharacter &target)
 
 void Character::printInventory() const
 {
-	AMateria * item;
+	AMateria *item;
 	std::cout << getName() << "'s Inventory: " << std::endl;
 	for (int i = 0; i < Character::_inventory_size; i++)
 	{
 		item = _inventory[i];
 		if (item)
-			std::cout << " - " <<  _inventory[i]->getType() << "\n";
+			std::cout << " - " << _inventory[i]->getType() << "\n";
 	}
 	std::cout << std::endl;
 }
@@ -114,16 +118,12 @@ void Character::deleteInventory()
 	for (int i = 0; i < Character::_inventory_size; i++)
 	{
 		item = _inventory[i];
-		if (item)
-		{
-			delete item;
-			_inventory[i] = NULL;
-		}
+		if (item) delete item;
+		_inventory[i] = NULL;
 	}
 }
 
-
-std::ostream & operator << (std::ostream & o, const Character &character)
+std::ostream &operator<<(std::ostream &o, const Character &character)
 {
 	o << character.getName();
 	return (o);

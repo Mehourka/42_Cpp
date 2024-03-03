@@ -1,10 +1,12 @@
 CC	= c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
+CFlags += -g
 
 NAME = Materia
 SRCS =	main.cpp \
 		AMateria.cpp \
 		AMateria_list.cpp\
+		MateriaSource.cpp\
 		Ice.cpp\
 		Cure.cpp\
 		Character.cpp\

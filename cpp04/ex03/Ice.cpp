@@ -1,6 +1,6 @@
 #include "Ice.hpp"
 
-Ice::Ice() : AMateria("Ice")
+Ice::Ice() : AMateria("ice")
 {
 	Log("Ice Default Constr. called");
 }
@@ -9,7 +9,7 @@ Ice::~Ice()
 {
 	Log("Ice Dest. called");
 }
-Ice::Ice(const Ice &other): AMateria(other)
+Ice::Ice(const Ice &other) : AMateria(other)
 {
 	Log("Ice Copy Constr. called");
 	*this = other;
