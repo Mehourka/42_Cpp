@@ -11,8 +11,10 @@ typedef struct m_list_s {
 class AMateria
 {
 protected:
-	std::string _type;
+	std::string		_type;
+	ICharacter		*_owner;
 	static m_list_t	*materiaList;
+
 
 protected:
 	void pushMateria();
@@ -31,6 +33,12 @@ public:
 
 	virtual AMateria *clone() const = 0;
 	virtual void use(ICharacter& target);
+	ICharacter * getOwner() const;
+	void setOwner(ICharacter *);
+
+	AMateria & getItem(int idx);
+
+	static void deleteUnequipedMaterias();
 	static void printMateriaList();
 };
 

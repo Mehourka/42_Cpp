@@ -2,7 +2,7 @@
 
 Cure::Cure() : AMateria("Cure")
 {
-	Log("Cure Def. Constr. called\n");
+	Log("Cure Def. Constr. called");
 
 }
 Cure::~Cure()

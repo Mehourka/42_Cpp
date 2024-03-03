@@ -53,11 +53,31 @@ void AMateria::popMateria(AMateria *target)
 void AMateria::printMateriaList()
 {
     m_list_t *ptr = AMateria::materiaList;
-    std::cout << GREEN << "- [Materia's List] : " << WHITE;
+    std::cout <<"\n"
+              << GREEN << "- [Materia's List] : " << WHITE << std::endl;
     while (ptr)
     {
-        std::cout << ptr->materiaPTR->getType() << ", ";
+        std::cout << ptr->materiaPTR->getType()
+                  << " - " << ptr->materiaPTR << ")"
+                  << " - Owner:" << ptr->materiaPTR->getOwner() << std::endl;
         ptr = ptr->next;
     }
     std::cout << std::endl;
+}
+
+void AMateria::deleteUnequipedMaterias()
+{
+    m_list_t *ptr = AMateria::materiaList;
+    AMateria *m;
+    while (ptr)
+    {
+
+        m = ptr->materiaPTR;
+        ptr = ptr->next;
+        if (m->getOwner() == NULL)
+        {
+            m->popMateria(m);
+            delete m;
+        }
+    }
 }

@@ -2,7 +2,7 @@
 
 Ice::Ice() : AMateria("Ice")
 {
-	Log("Ice Default Constr. called\n");
+	Log("Ice Default Constr. called");
 }
 
 Ice::~Ice()
@@ -11,12 +11,12 @@ Ice::~Ice()
 }
 Ice::Ice(const Ice &other): AMateria(other)
 {
-	Log("Ice Copy Constr. called\n");
+	Log("Ice Copy Constr. called");
 	*this = other;
 }
 Ice &Ice::operator=(const Ice &)
 {
-	Log("Ice Assign. Override called\n");
+	Log("Ice Assign. Override called");
 	// Deep copy here
 	return *this;
 }
