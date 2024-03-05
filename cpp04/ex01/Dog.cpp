@@ -21,6 +21,7 @@ Dog &Dog::operator=(const Dog &other)
 {
     Log("Dog Assignaion Constructor called");
     _type = other.getType();
+    delete this->_brain;
     this->_brain = new Brain(*other._brain);
     return *this;
 }

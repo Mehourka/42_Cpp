@@ -21,7 +21,7 @@ int main(void)
     delete j;
     delete meta;
 
-    if (true)
+    if (false)
     {
         std::cout << "\n\nWrong Animals :" << std::endl;
 
@@ -37,6 +37,5 @@ int main(void)
         delete w_animal;
         delete w_cat;
     }
-
     return 0;
 }
