@@ -44,12 +44,12 @@ void Bureaucrat::setGrade(const int &val)
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return ("GradeTooHighException: Grade is higher than max: 150");
+    return ("GradeTooHighException: Grade is higher than max: 1");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return ("GradeTooLowException: Grade is lower than min: 1");
+    return ("GradeTooLowException: Grade is lower min: 150");
 }
 
 string Bureaucrat::getName() const
