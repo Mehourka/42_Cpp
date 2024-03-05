@@ -1,3 +1,4 @@
+#pragma once
 #include "Common.hpp"
 
 class MyClass
@@ -8,10 +9,8 @@ private:
 public:
     MyClass();
     MyClass(const MyClass &);
-    MyClass & operator = (const MyClass &);
+    MyClass &operator=(const MyClass &);
     ~MyClass();
 
     void sayHello() const;
-
 };
-

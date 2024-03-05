@@ -1,17 +1,19 @@
 #include "MyClass.hpp"
 
-MyClass::MyClass(): _attr(0)
+MyClass::MyClass() : _attr(0)
 {
-
+    Log("[ MyClass ] Default Constructor");
 }
 
-MyClass::MyClass(const MyClass & other): _attr(0)
+MyClass::MyClass(const MyClass &other) : _attr(0)
 {
+    Log("[ MyClass ] Copy Constructor");
     *this = other;
 }
 
-MyClass& MyClass::operator=(const MyClass &other)
+MyClass &MyClass::operator=(const MyClass &other)
 {
+    Log("[ MyClass ] Assigment Operator");
     // Copy Here
     this->_attr = other._attr;
     return *this;
@@ -19,11 +21,10 @@ MyClass& MyClass::operator=(const MyClass &other)
 
 MyClass::~MyClass()
 {
-
+    Log("[ MyClass ] Default Destructor");
 }
 
 void MyClass::sayHello() const
 {
-    Log("Hello from MyClass");
+    LogInfo("Hello from MyClass");
 }
-

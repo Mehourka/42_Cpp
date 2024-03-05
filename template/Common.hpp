@@ -8,9 +8,12 @@
 #define GREEN "\033[32m"
 #define WHITE "\033[37m"
 
-#define _LOG  true
+#define _LOG true
 
-#define Log(x) if(_LOG) std::cout << GRAY << (x) << WHITE << std::endl
+#define Log(x) \
+	if (_LOG)  \
+	std::cout << GRAY << (x) << WHITE << std::endl
+
 #define LogInfo(x) std::cout << WHITE << (x) << WHITE << std::endl
 
 using std::string;

@@ -1,34 +1,40 @@
 CC	= c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors
 
-
 NAME := $(notdir $(shell pwd))
 SRCS := $(wildcard *.cpp)
 
 OBJDIR	:= obj/
 OBJS	:= $(SRCS:%.cpp=$(OBJDIR)%.o)
 
-all: re
+CYAN	:= "\033[0;36m"
+PURPLE	:= "\033[0;35m"
 
-test:
-	echo $(SRCS)
-	echo $(OBJS)
+
+
+all: $(NAME)
+
+run: re
+	@echo $(CYAN)Running ./$(NAME) ... "\n"
+	@./$(NAME)
 
 $(NAME): $(OBJS)
-	@echo Compiling ./$(NAME) ...
+	@echo $(PURPLE)Compiling ./$(NAME) ...
 	$(CC) $(CFLAGS) -o $@ $(OBJS)
-	@echo "Done !\n"
+	@echo $(CYAN)"Done !\n"
 
 $(OBJDIR)%.o: %.cpp
 	@mkdir -p $(@D);
-	$(CC) -c $(CFLAGS) -MMD -MP $< -o $@
+	@$(CC) -c $(CFLAGS) -MMD -MP $< -o $@
 
 -include $(DEPS)
 
 clean:
-	@echo Deleting ./$(NAME)
-	@rm -rf $(NAME)
+	@echo $(PURPLE)Deleting Object files
+	@rm -f $(OBJS)
 
 fclean: clean
+	@echo $(PURPLE)Deleting ./$(NAME)
+	@rm -rf $(NAME)
 
 re: fclean $(NAME)
