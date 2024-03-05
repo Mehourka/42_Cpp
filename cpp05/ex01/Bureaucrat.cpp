@@ -42,16 +42,6 @@ void Bureaucrat::setGrade(const int &val)
     _grade = val;
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw()
-{
-    return ("GradeTooHighException: Grade is higher than max: 150");
-}
-
-const char *Bureaucrat::GradeTooLowException::what() const throw()
-{
-    return ("GradeTooLowException: Grade is lower than min: 1");
-}
-
 string Bureaucrat::getName() const
 {
     return (_name);
@@ -70,6 +60,30 @@ void Bureaucrat::upgrade()
 void Bureaucrat::downgrade()
 {
     setGrade(getGrade() - 1);
+}
+
+void Bureaucrat::signForm(Form &form) const
+{
+    try
+    {
+        form.beSigned(*this);
+        std::cout << getName() << " signed " << form.getName() << std::endl;
+    }
+    catch (const Form::GradeTooLowException &e)
+    {
+        std::cout << getName() << " couldn't signe " << form.getName()
+                  << " because of insuficient grade." << std::endl;
+    }
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return ("GradeTooHighException: Grade is higher than max: 150");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return ("GradeTooLowException: Grade is lower than min: 1");
 }
 
 std::ostream &operator<<(std::ostream &o, const Bureaucrat &b)

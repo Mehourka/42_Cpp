@@ -1,6 +1,8 @@
 #pragma once
 #include "Common.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 private:
@@ -27,6 +29,7 @@ public:
     int getSignatureGrade() const;
     int getExecutionGrade() const;
     bool getIsSigned() const;
+    void beSigned(const Bureaucrat &);
 
     // Exception classes
 public:

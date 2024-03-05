@@ -1,22 +1,27 @@
 #include <iostream>
 #include "Common.hpp"
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main(void)
 {
 
+    // Do not change: not in try block
+    Bureaucrat pew = Bureaucrat("Pew", 43);
     Bureaucrat pie = Bureaucrat("Pie", 41);
-    Bureaucrat pew = Bureaucrat("Pew", 150);
+
+    Form form = Form("A-42", 42, 42);
 
     try
     {
         LogInfoC("Try block start: \n", YELLOW);
         std::cout << pie << pew << std::endl;
-        pie.upgrade();
-        // pew.upgrade();                // Throws exception
-        // Bureaucrat over("Over", 151); // Throws exception
-        // Bureaucrat under("Under", 0); // Throws exception
-        pew.downgrade();
+        std::cout << form << std::endl;
+
+        pew.signForm(form);
+        pie.signForm(form);
+        // Form over("Over", 151, 151); // Throws exception
+        // Form under("Under", 0, 0); // Throws exception
         LogInfoC("Try block Complete !\n", GREEN);
     }
     catch (const std::exception &e)

@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form()
     : _name("Blank Paper"),
@@ -54,16 +55,6 @@ void Form::validateGrade(const int &val)
         throw Form::GradeTooLowException();
 }
 
-const char *Form::GradeTooHighException::what() const throw()
-{
-    return ("GradeTooHighException: Grade is higher than max: 150");
-}
-
-const char *Form::GradeTooLowException::what() const throw()
-{
-    return ("GradeTooLowException: Grade is lower than min: 1");
-}
-
 string Form::getName() const
 {
     return (_name);
@@ -82,6 +73,23 @@ int Form::getExecutionGrade() const
 bool Form::getIsSigned() const
 {
     return (_isSigned);
+}
+
+void Form::beSigned(const Bureaucrat &b)
+{
+    if (b.getGrade() > getSignatureGrade())
+        throw Form::GradeTooLowException();
+    _isSigned = true;
+}
+
+const char *Form::GradeTooHighException::what() const throw()
+{
+    return ("GradeTooHighException: Grade is higher than max: 1");
+}
+
+const char *Form::GradeTooLowException::what() const throw()
+{
+    return ("GradeTooLowException: Grade is lower than expected");
 }
 
 std::ostream &operator<<(std::ostream &o, const Form &form)
