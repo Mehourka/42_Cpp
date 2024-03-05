@@ -38,3 +38,6 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean $(NAME)
+
+leak: re
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME):
