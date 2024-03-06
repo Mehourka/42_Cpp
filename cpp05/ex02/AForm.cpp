@@ -3,8 +3,8 @@
 
 AForm::AForm()
     : _name("Blank Paper"),
-      _executionGrade(150),
       _signatureGrade(150),
+      _executionGrade(150),
       _isSigned(false)
 {
     Log("[ AForm ] Default Constructor");
@@ -12,8 +12,8 @@ AForm::AForm()
 
 AForm::AForm(const string &name, const int &executionGrade, const int &signatureGrade)
     : _name(name),
-      _executionGrade(executionGrade),
       _signatureGrade(signatureGrade),
+      _executionGrade(executionGrade),
       _isSigned(false)
 {
     Log("[ AForm ] Name/Grade Constructor");
@@ -23,13 +23,13 @@ AForm::AForm(const string &name, const int &executionGrade, const int &signature
 
 AForm::AForm(const AForm &other)
     : _name(other.getName()),
-      _executionGrade(other.getExecutionGrade()),
       _signatureGrade(other.getSignatureGrade()),
+      _executionGrade(other.getExecutionGrade()),
       _isSigned(false)
 {
     Log("[ AForm ] Copy Constructor");
-    validateGrade(_executionGrade);
     validateGrade(_signatureGrade);
+    validateGrade(_executionGrade);
     *this = other;
 }
 
@@ -75,11 +75,28 @@ bool AForm::getIsSigned() const
     return (_isSigned);
 }
 
+void AForm::setTarget(const string &target)
+{
+    _target = target;
+}
+
+std::string AForm::getTarget() const
+{
+    return _target;
+}
+
 void AForm::beSigned(const Bureaucrat &b)
 {
     if (b.getGrade() > getSignatureGrade())
         throw AForm::GradeTooLowException();
     _isSigned = true;
+}
+
+void AForm::execute(const Bureaucrat & exec) const
+{
+    if (exec.getGrade() > getExecutionGrade())
+        throw AForm::GradeTooLowException();
+    formAction();
 }
 
 const char *AForm::GradeTooHighException::what() const throw()
@@ -95,8 +112,8 @@ const char *AForm::GradeTooLowException::what() const throw()
 std::ostream &operator<<(std::ostream &o, const AForm &form)
 {
     o << form.getName()
-      << ", AForm signature grade " << form.getSignatureGrade()
-      << ", AForm execution grade " << form.getExecutionGrade()
+      << ", signature grade " << form.getSignatureGrade()
+      << ", execution grade " << form.getExecutionGrade()
       << std::endl;
 
     return o;
