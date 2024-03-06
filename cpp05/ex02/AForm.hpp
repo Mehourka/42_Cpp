@@ -51,6 +51,12 @@ public:
     public:
         virtual const char *what() const throw();
     };
+
+    class UnsignedFormException : public std::exception
+    {
+    public:
+        virtual const char *what() const throw();
+    };
 };
 
 std::ostream &operator<<(std::ostream &o, const AForm &f);

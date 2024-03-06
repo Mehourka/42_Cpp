@@ -2,20 +2,20 @@
 #include "Bureaucrat.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm()
-    : AForm("formulaire de pardon présidentiel", 25, 5)
+    : AForm("Presidential pardon form", 25, 5)
 {
     Log("[ PresidentialPardonForm ] Default Constructor");
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const string &target)
-    : AForm("formulaire de pardon présidentiel", 25, 5)
+    : AForm("Presidential pardon form", 25, 5)
 {
     Log("[ PresidentialPardonForm ] Default Constructor");
     setTarget(target);
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other)
-    : AForm("formulaire de pardon présidentiel", 25, 5)
+    : AForm("Presidential pardon form", 25, 5)
 {
     Log("[ PresidentialPardonForm ] Copy Constructor");
     *this = other;

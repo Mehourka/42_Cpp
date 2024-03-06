@@ -10,7 +10,7 @@ AForm::AForm()
     Log("[ AForm ] Default Constructor");
 }
 
-AForm::AForm(const string &name, const int &executionGrade, const int &signatureGrade)
+AForm::AForm(const string &name, const int &signatureGrade, const int &executionGrade)
     : _name(name),
       _signatureGrade(signatureGrade),
       _executionGrade(executionGrade),
@@ -88,7 +88,9 @@ std::string AForm::getTarget() const
 void AForm::beSigned(const Bureaucrat &b)
 {
     if (b.getGrade() > getSignatureGrade())
+    {
         throw AForm::GradeTooLowException();
+    }
     _isSigned = true;
 }
 
@@ -96,25 +98,32 @@ void AForm::execute(const Bureaucrat & exec) const
 {
     if (exec.getGrade() > getExecutionGrade())
         throw AForm::GradeTooLowException();
+    if (_isSigned == false)
+        throw AForm::UnsignedFormException();
+
     formAction();
 }
 
 const char *AForm::GradeTooHighException::what() const throw()
 {
-    return ("GradeTooHighException: Grade is higher than max: 1");
+    return ("[ GradeTooHighException] Grade is higher than max: 1");
 }
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-    return ("GradeTooLowException: Grade is lower than expected");
+    return ("[ GradeTooLowException] Grade is lower than expected");
+}
+
+const char *AForm::UnsignedFormException::what() const throw()
+{
+    return ("[ UnsignedFormException ] Cannot execute unsigned form");
 }
 
 std::ostream &operator<<(std::ostream &o, const AForm &form)
 {
-    o << form.getName()
+    o << BLUE << form.getName()
       << ", signature grade " << form.getSignatureGrade()
       << ", execution grade " << form.getExecutionGrade()
-      << std::endl;
-
+      << WHITE;
     return o;
 }

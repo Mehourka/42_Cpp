@@ -2,27 +2,41 @@
 #include "Common.hpp"
 #include "Bureaucrat.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int main(void)
 {
 
     // Do not change: not in try block
-    Bureaucrat pew = Bureaucrat("Pew", 5);
-    Bureaucrat pie = Bureaucrat("Pie", 30);
+    Bureaucrat pippin = Bureaucrat("Pippin", 140);
+    Bureaucrat aragorn = Bureaucrat("Aragorn", 25);
+    Bureaucrat gandalf = Bureaucrat("Gandalf", 5);
 
-    PresidentialPardonForm form("Elon Musk");
+
+    RobotomyRequestForm robotomize("Melon Eusk");
+    PresidentialPardonForm pardon("Emon Lusk");
+    // PresidentialPardonForm pardon("Elos Munk");
 
     try
     {
+
         LogInfoC("Try block start: \n", YELLOW);
-        std::cout << pie << pew << std::endl;
-        std::cout << form << std::endl;
+        std::cout << gandalf << aragorn << pippin << std::endl;
 
-        pew.signForm(form);
-        pie.signForm(form);
+        std::cout << "\n" << robotomize << std::endl;
 
-        pew.executeForm(form);
-        pie.executeForm(form);
+        gandalf.executeForm(robotomize); // Cant execute unsigned form
+        pippin.signForm(robotomize); // Grade insuffisant
+        aragorn.signForm(robotomize);
+        gandalf.executeForm(robotomize);
+
+        std::cout << "\n\n" << pardon << std::endl;
+        aragorn.signForm(pardon);
+        aragorn.executeForm(pardon);
+        gandalf.executeForm(pardon);
+
+
+        // std::cout << "\n" << pardon << std::endl;
         // Form over("Over", 151, 151); // Throws exception
         // Form under("Under", 0, 0); // Throws exception
         LogInfoC("Try block Complete !\n", GREEN);
@@ -33,7 +47,7 @@ int main(void)
         LogErr(e.what());
     }
 
-    std::cout << pie << pew << std::endl;
+
 
     return (0);
 }

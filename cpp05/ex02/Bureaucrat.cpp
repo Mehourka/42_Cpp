@@ -67,12 +67,12 @@ void Bureaucrat::signForm(AForm &form) const
     try
     {
         form.beSigned(*this);
-        std::cout << getName() << " signed " << form.getName() << std::endl;
+        std::cout << getName() << " signed " << form.getName() << " successfully 🖋️" <<std::endl;
     }
     catch (const AForm::GradeTooLowException &e)
     {
         std::cout << getName() << " couldn't signe " << form.getName()
-                  << " because of insuficient grade." << std::endl;
+                  << " because of insuficient grade ❌" << std::endl;
     }
 }
 
@@ -81,13 +81,19 @@ void Bureaucrat::executeForm(AForm const & form)
     try
     {
         form.execute(*this);
-        std::cout << getName() << " signed " << form.getName() << std::endl;
+        std::cout << getName() << " executed " << form.getName() << " successfully ✅"<< std::endl;
     }
     catch (const AForm::GradeTooLowException &e)
     {
         std::cout << getName() << " couldn't execute " << form.getName()
                   << " on " << form.getTarget()
                   << " because of insuficient grade." << std::endl;
+    }
+    catch (const AForm::UnsignedFormException &e)
+    {
+        std::cout << getName() << " couldn't execute " << form.getName()
+                  << " on " << form.getTarget()
+                  << " because form is unsigned ❌" << std::endl;
     }
 }
 
