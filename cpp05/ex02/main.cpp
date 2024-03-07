@@ -3,6 +3,8 @@
 #include "Bureaucrat.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+
 
 int main(void)
 {
@@ -15,7 +17,7 @@ int main(void)
 
     RobotomyRequestForm robotomize("Melon Eusk");
     PresidentialPardonForm pardon("Emon Lusk");
-    // PresidentialPardonForm pardon("Elos Munk");
+    ShrubberyCreationForm plants("Elos Munk");
 
     try
     {
@@ -23,22 +25,24 @@ int main(void)
         LogInfoC("Try block start: \n", YELLOW);
         std::cout << gandalf << aragorn << pippin << std::endl;
 
-        std::cout << "\n" << robotomize << std::endl;
 
+        std::cout << "\n" << plants << std::endl;
+        pippin.signForm(plants);
+        pippin.executeForm(plants);
+        aragorn.executeForm(plants);
+
+        std::cout << "\n" << robotomize << std::endl;
         gandalf.executeForm(robotomize); // Cant execute unsigned form
         pippin.signForm(robotomize); // Grade insuffisant
         aragorn.signForm(robotomize);
         gandalf.executeForm(robotomize);
 
-        std::cout << "\n\n" << pardon << std::endl;
+        std::cout << "\n" << pardon << std::endl;
         aragorn.signForm(pardon);
         aragorn.executeForm(pardon);
         gandalf.executeForm(pardon);
 
 
-        // std::cout << "\n" << pardon << std::endl;
-        // Form over("Over", 151, 151); // Throws exception
-        // Form under("Under", 0, 0); // Throws exception
         LogInfoC("Try block Complete !\n", GREEN);
     }
     catch (const std::exception &e)

@@ -87,7 +87,7 @@ void Bureaucrat::executeForm(AForm const & form)
     {
         std::cout << getName() << " couldn't execute " << form.getName()
                   << " on " << form.getTarget()
-                  << " because of insuficient grade." << std::endl;
+                  << " because of insuficient grade ❌" << std::endl;
     }
     catch (const AForm::UnsignedFormException &e)
     {
