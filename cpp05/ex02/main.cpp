@@ -10,10 +10,9 @@ int main(void)
 {
 
     // Do not change: not in try block
-    Bureaucrat pippin = Bureaucrat("Pippin", 140);
-    Bureaucrat aragorn = Bureaucrat("Aragorn", 25);
-    Bureaucrat gandalf = Bureaucrat("Gandalf", 5);
-
+    Bureaucrat low_grade = Bureaucrat("Pippin", 140);
+    Bureaucrat mid_grade = Bureaucrat("Aragorn", 25);
+    Bureaucrat high_grade = Bureaucrat("Gandalf", 5);
 
     RobotomyRequestForm robotomize("Melon Eusk");
     PresidentialPardonForm pardon("Emon Lusk");
@@ -23,24 +22,23 @@ int main(void)
     {
 
         LogInfoC("Try block start: \n", YELLOW);
-        std::cout << gandalf << aragorn << pippin << std::endl;
-
+        std::cout << high_grade << mid_grade << low_grade << std::endl;
 
         std::cout << "\n" << plants << std::endl;
-        pippin.signForm(plants);
-        pippin.executeForm(plants);
-        aragorn.executeForm(plants);
+        low_grade.signForm(plants);
+        low_grade.executeForm(plants);      // Insufficient Grade 
+        mid_grade.executeForm(plants);
 
         std::cout << "\n" << robotomize << std::endl;
-        gandalf.executeForm(robotomize); // Cant execute unsigned form
-        pippin.signForm(robotomize); // Grade insuffisant
-        aragorn.signForm(robotomize);
-        gandalf.executeForm(robotomize);
+        high_grade.executeForm(robotomize); // Cant execute unsigned form
+        low_grade.signForm(robotomize);     // Insufficient Grade 
+        mid_grade.signForm(robotomize);
+        high_grade.executeForm(robotomize);
 
         std::cout << "\n" << pardon << std::endl;
-        aragorn.signForm(pardon);
-        aragorn.executeForm(pardon);
-        gandalf.executeForm(pardon);
+        mid_grade.signForm(pardon);
+        mid_grade.executeForm(pardon);      // Insufficient Grade 
+        high_grade.executeForm(pardon);
 
 
         LogInfoC("Try block Complete !\n", GREEN);

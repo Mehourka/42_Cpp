@@ -41,4 +41,3 @@ void PresidentialPardonForm::formAction() const
               << " à été pardonnée par Zaphod Beeblebrox."
               << std::endl;
 }
-
