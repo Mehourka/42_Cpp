@@ -11,8 +11,8 @@ private:
     const int _executionGrade;
     bool _isSigned;
     std::string _target;
-    static const int MaxGrade = 150;
-    static const int MinGrade = 1;
+    static const int MaxGrade = 1;
+    static const int MinGrade = 150;
 
 private:
     AForm(); // Canonical

@@ -15,7 +15,7 @@
 #define YELLOW "\033[33m"
 
 // Set true for debug
-#define _LOG true
+#define _LOG false
 
 // std::cout Macros
 #define Log(x) \

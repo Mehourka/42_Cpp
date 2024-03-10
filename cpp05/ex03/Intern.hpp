@@ -31,5 +31,3 @@ private:
         virtual const char *what() const throw();
     };
 };
-
-

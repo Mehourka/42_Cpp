@@ -24,8 +24,6 @@ Intern::~Intern()
     Log("[ Intern ] Default Destructor");
 }
 
-
-
 AForm *Intern::makeForm(const std::string &type, const std::string &target)
 {
         formCreatorFnc formFnc = findFormFnc(type);

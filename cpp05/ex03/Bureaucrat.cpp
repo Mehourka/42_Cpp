@@ -34,9 +34,9 @@ Bureaucrat::~Bureaucrat()
 
 void Bureaucrat::setGrade(const int &val)
 {
-    if (val > Bureaucrat::MaxGrade)
+    if (val < Bureaucrat::MaxGrade)
         throw Bureaucrat::GradeTooHighException();
-    if (val < Bureaucrat::MinGrade)
+    if (val > Bureaucrat::MinGrade)
         throw Bureaucrat::GradeTooLowException();
 
     _grade = val;

@@ -49,9 +49,9 @@ AForm::~AForm()
 
 void AForm::validateGrade(const int &val)
 {
-    if (val > AForm::MaxGrade)
+    if (val < AForm::MaxGrade)
         throw AForm::GradeTooHighException();
-    if (val < AForm::MinGrade)
+    if (val > AForm::MinGrade)
         throw AForm::GradeTooLowException();
 }
 

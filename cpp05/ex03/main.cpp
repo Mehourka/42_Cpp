@@ -30,8 +30,7 @@ int main(void)
         scf = tim.makeForm("presidential pardon", "Elos Munk");
 
         // Throws error if form does not exist
-        // tim.makeForm("made-up form", "Elos Munk");
-
+        tim.makeForm("made-up form", "Elos Munk");
 
         LogInfoC("Try block start: \n", YELLOW);
         std::cout << gandalf << aragorn << pippin << std::endl;

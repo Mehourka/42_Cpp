@@ -66,4 +66,3 @@ void ShrubberyCreationForm::formAction() const
 
     std::cout << outfile_path << " has been planted 🌲" << std::endl;
 }
-
