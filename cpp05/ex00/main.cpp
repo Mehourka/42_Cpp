@@ -25,7 +25,6 @@ int main(void)
         LogErr(e.what());
     }
 
-    std::cout << pie << pew << std::endl;
 
     return (0);
 }

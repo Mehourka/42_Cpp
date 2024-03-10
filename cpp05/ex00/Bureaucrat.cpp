@@ -34,9 +34,9 @@ Bureaucrat::~Bureaucrat()
 
 void Bureaucrat::setGrade(const int &val)
 {
-    if (val > Bureaucrat::MaxGrade)
+    if (val < Bureaucrat::MaxGrade)
         throw Bureaucrat::GradeTooHighException();
-    if (val < Bureaucrat::MinGrade)
+    if (val > Bureaucrat::MinGrade)
         throw Bureaucrat::GradeTooLowException();
 
     _grade = val;
@@ -44,12 +44,12 @@ void Bureaucrat::setGrade(const int &val)
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return ("GradeTooHighException: Grade is higher than max: 1");
+    return ("GradeTooHighException: Grade is \"higher\" than max: 1");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return ("GradeTooLowException: Grade is lower min: 150");
+    return ("GradeTooLowException: Grade is \"lower\" than min: 150");
 }
 
 string Bureaucrat::getName() const
@@ -65,11 +65,13 @@ int Bureaucrat::getGrade() const
 void Bureaucrat::upgrade()
 {
     setGrade(getGrade() + 1);
+    std::cout << "Upgraded " << *this;
 }
 
 void Bureaucrat::downgrade()
 {
     setGrade(getGrade() - 1);
+    std::cout << "Downgraded " << *this;
 }
 
 std::ostream &operator<<(std::ostream &o, const Bureaucrat &b)
