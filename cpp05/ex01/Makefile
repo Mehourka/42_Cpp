@@ -9,19 +9,21 @@ OBJS	:= $(SRCS:%.cpp=$(OBJDIR)%.o)
 
 CYAN	:= "\033[0;36m"
 PURPLE	:= "\033[0;35m"
+CYAN	:= $(PRUPLE)
+RESET	:= "\033[00m"
 
 
 
 all: $(NAME)
 
 run: re
-	@echo $(CYAN)Running ./$(NAME) ... "\n"
+	@echo $(PURPLE)Running ./$(NAME) ... $(RESET)"\n"
 	@./$(NAME)
 
 $(NAME): $(OBJS)
 	@echo $(PURPLE)Compiling ./$(NAME) ...
 	$(CC) $(CFLAGS) -o $@ $(OBJS)
-	@echo $(CYAN)"Done !\n"
+	@echo $(CYAN)"Done !\n" $(RESET) 
 
 $(OBJDIR)%.o: %.cpp
 	@mkdir -p $(@D);
@@ -30,14 +32,15 @@ $(OBJDIR)%.o: %.cpp
 -include $(DEPS)
 
 clean:
-	@echo $(PURPLE)Deleting Object files
+	@echo $(PURPLE)Deleting Object files $(RESET) 
 	@rm -f $(OBJS)
 
 fclean: clean
-	@echo $(PURPLE)Deleting ./$(NAME)
+	@echo $(PURPLE)Deleting ./$(NAME) $(RESET) 
 	@rm -rf $(NAME)
 
 re: fclean $(NAME)
 
 leak: re
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME):
+	leaks -atExit -- ./$(NAME)
+# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME):

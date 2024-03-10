@@ -9,8 +9,8 @@ class Bureaucrat
 private:
     const string _name;
     int _grade;
-    static const int MaxGrade = 150;
-    static const int MinGrade = 1;
+    static const int MaxGrade = 1;
+    static const int MinGrade = 150;
 
 private:
     Bureaucrat(); // Canonical

@@ -22,15 +22,12 @@ int main(void)
         pie.signForm(form);
         // Form over("Over", 151, 151); // Throws exception
         // Form under("Under", 0, 0); // Throws exception
-        LogInfoC("Try block Complete !\n", GREEN);
+        LogInfoC("\nTry block Complete !\n", GREEN);
     }
     catch (const std::exception &e)
     {
         LogErr("Caught exception");
         LogErr(e.what());
     }
-
-    std::cout << pie << pew << std::endl;
-
     return (0);
 }

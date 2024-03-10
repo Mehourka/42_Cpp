@@ -10,8 +10,8 @@ private:
     const int _executionGrade;
     const int _signatureGrade;
     bool _isSigned;
-    static const int MaxGrade = 150;
-    static const int MinGrade = 1;
+    static const int MaxGrade = 1;
+    static const int MinGrade = 150;
 
 private:
     Form(); // Canonical

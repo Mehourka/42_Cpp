@@ -49,9 +49,9 @@ Form::~Form()
 
 void Form::validateGrade(const int &val)
 {
-    if (val > Form::MaxGrade)
+    if (val < Form::MaxGrade)
         throw Form::GradeTooHighException();
-    if (val < Form::MinGrade)
+    if (val > Form::MinGrade)
         throw Form::GradeTooLowException();
 }
 
@@ -95,8 +95,8 @@ const char *Form::GradeTooLowException::what() const throw()
 std::ostream &operator<<(std::ostream &o, const Form &form)
 {
     o << form.getName()
-      << ", form signature grade " << form.getSignatureGrade()
-      << ", form execution grade " << form.getExecutionGrade()
+      << ", signature grade " << form.getSignatureGrade()
+      << ", execution grade " << form.getExecutionGrade()
       << std::endl;
 
     return o;
