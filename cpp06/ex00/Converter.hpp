@@ -3,6 +3,7 @@
 #include "Common.hpp"
 #include <exception>
 #include <climits>
+#include <cmath>
 
 class Converter {
 private:

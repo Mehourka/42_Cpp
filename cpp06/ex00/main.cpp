@@ -32,13 +32,6 @@ int main(int argc, char **argv)
     exit(1);
   }
  
-
-  /* try { */
-  /*   std::cout << conv << std::endl; */
-  /* } catch (const Converter::InvalidConversion &e) { */
-  /*   std::cout <<  "[ERROR CAUGHT]" << e.what() << std::endl; */
-  /* } */
-
-
+  return (0);
 }
 

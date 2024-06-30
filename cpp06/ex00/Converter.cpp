@@ -1,5 +1,6 @@
 #include "Converter.hpp"
 #include <cfloat>
+#include <cmath>
 #include <iomanip>
 
 // ==================
@@ -12,7 +13,6 @@ Converter::Converter(): _str(""), _type(NoType)
 
 Converter::~Converter()
 {
-
 }
 
 Converter::Converter(const Converter &other)
@@ -68,7 +68,6 @@ Converter ::Converter(const std::string &str): _str(str), _type(NoType)
 // Type Checks
 // ==================
 
-
 bool Converter::is_int()
 {
 	char *end = NULL;
@@ -76,6 +75,7 @@ bool Converter::is_int()
 
 	return end[0] == '\0';
 }
+
 bool Converter::is_float()
 {
 	char *end = NULL;
@@ -83,6 +83,7 @@ bool Converter::is_float()
 
 	return end[0] == 'f' && end[1] == '\0';
 }
+
 bool Converter::is_double()
 {
 	char *end = NULL;
@@ -90,6 +91,7 @@ bool Converter::is_double()
 
 	return end[0] == '\0';
 }
+
 bool Converter::is_char()
 {
 	return (_str.length() == 1 && std::isprint(_str[0]));
@@ -102,7 +104,7 @@ bool Converter::is_char()
 std::string Converter::convert(char c)
 {
   std::ostringstream oss;
-  if (_dvalue > CHAR_MAX || _dvalue < CHAR_MIN)
+  if (_dvalue > CHAR_MAX || _dvalue < CHAR_MIN || _dvalue != _dvalue )
     return ("Impossible");
   if (!std::isprint(c))
     return "Not Displayable";
@@ -112,7 +114,7 @@ std::string Converter::convert(char c)
 
 std::string Converter::convert(int i)
 {
-  if (_dvalue > INT_MAX || _dvalue < INT_MIN)
+  if (_dvalue > INT_MAX || _dvalue <= INT_MIN || _dvalue != _dvalue)
     return ("Impossible");
   std::ostringstream oss;
   oss << i;
@@ -121,18 +123,31 @@ std::string Converter::convert(int i)
 
 std::string Converter::convert(float f)
 {
-  /* if (_dvalue > FLT_MAX || _dvalue < FLT_MIN) */
-    /* return ("Impossible"); */
+  if (!std::isinf(f) &&  std::abs(f) > FLT_MAX)
+  {
+      return ("Impossible");
+  }
   std::ostringstream oss;
+
+  float tmp;
+  if (std::modf(f, &tmp) == 0)
+    oss << std::fixed << std::setprecision(1);
   oss << f << "f";
   return oss.str();
 }
 
 std::string Converter::convert(double d)
 {
-  /* if (_dvalue > DBL_MAX || _dvalue < DBL_MIN) */
-    /* return ("Impossible"); */
+  if (!std::isinf(d) && std::abs(d) > DBL_MAX)
+  {
+      return ("Impossible");
+  }
   std::ostringstream oss;
+  
+  double tmp;
+  if (std::modf(d, &tmp) == 0)
+    oss << std::fixed << std::setprecision(1);
+
   oss << d; 
   return oss.str();
 }
@@ -165,12 +180,12 @@ Converter::operator double() const
 
 void Converter::print()
 {
-  std::cout \
+  std::cout\
 		<< "\nChar: " << convert( static_cast<char>(*this) )\
 		<< "\nInt: " << convert( static_cast<int>(*this) )\
 		<< "\nFloat: " << convert( static_cast<float>(*this) )\
 		<< "\nDouble: " << convert( static_cast<double>(*this) )\
-		<< std::endl;
+		<< "\n\n" << std::endl;
 }
 
 void Converter::trim_spaces()
@@ -195,11 +210,6 @@ void Converter::trim_spaces()
 // ==================
 // Errors
 // ==================
-
-const char* Converter::InvalidConversion::what() const throw()
-{
-  return ("Impossible Conversion");
-}
 
 const char* Converter::InvalidLiteral::what() const throw()
 {
