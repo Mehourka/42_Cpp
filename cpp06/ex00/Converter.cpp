@@ -1,31 +1,13 @@
 #include "Converter.hpp"
+#include <cfloat>
 #include <iomanip>
 
-Converter::Converter(): _str("")
-{
-}
+// ==================
+// Canonical Form
+// ==================
 
-Converter ::Converter(const std::string &str): _str(str)
+Converter::Converter(): _str(""), _type(NoType)
 {
-	this->trim_spaces();
-  if (is_int())
-  {
-    convert(
-      static_cast<int>(std::strtol(_str.data(), NULL, 10))
-    );
-  }
-  else if(is_char())
-  {
-   convert(_str[0]);
-  }
-  else if (is_double())
-  {
-    convert(std::strtod(_str.data(), NULL));
-  }
-  else if (is_float())
-  {
-    convert(std::strtof(_str.data(), NULL));
-  }
 }
 
 Converter::~Converter()
@@ -33,10 +15,9 @@ Converter::~Converter()
 
 }
 
-Converter::Converter(const Converter &str)
+Converter::Converter(const Converter &other)
 {
-	(void) str;
-
+  *this = other;
 }
 
 Converter & Converter::operator = (const Converter &other)
@@ -45,7 +26,48 @@ Converter & Converter::operator = (const Converter &other)
 	return *this;
 }
 
-// Checking 
+
+// ==================
+// Main Constructor
+// ==================
+
+Converter ::Converter(const std::string &str): _str(str), _type(NoType)
+{
+
+  const char *cstr = str.c_str();
+
+	this->trim_spaces();
+  if (is_int())
+  {
+    _type = Int;
+    _dvalue = static_cast<double>( strtol(cstr, NULL, 10) );
+  }
+  else if(is_char())
+  {
+    _type = Char;
+    _dvalue = static_cast<double>( cstr[0] );
+  }
+  else if (is_double())
+  {
+    _type = Double;
+    _dvalue = static_cast<double>( std::strtod(cstr, NULL) );
+  }
+  else if (is_float())
+  {
+    _type = Float;
+    _dvalue = static_cast<double>( std::strtof(cstr, NULL) );
+  }
+  
+  if (_type == NoType)
+    throw Converter::InvalidLiteral();
+}
+
+
+
+// ==================
+// Type Checks
+// ==================
+
 
 bool Converter::is_int()
 {
@@ -73,35 +95,81 @@ bool Converter::is_char()
 	return (_str.length() == 1 && std::isprint(_str[0]));
 }
 
-void Converter::convert(int i)
+// ==================
+// Conversions
+// ==================
+
+std::string Converter::convert(char c)
 {
-  std::cout << "Converting an INT" << std::endl;
+  std::ostringstream oss;
+  if (_dvalue > CHAR_MAX || _dvalue < CHAR_MIN)
+    return ("Impossible");
+  if (!std::isprint(c))
+    return "Not Displayable";
+  oss << c;
+  return oss.str();
 }
 
-void Converter::convert(double lit)
+std::string Converter::convert(int i)
 {
-  std::cout << "Converting a DOUBLE" << std::endl;
+  if (_dvalue > INT_MAX || _dvalue < INT_MIN)
+    return ("Impossible");
+  std::ostringstream oss;
+  oss << i;
+  return oss.str();
 }
 
-void Converter::convert(float f)
+std::string Converter::convert(float f)
 {
-  std::cout << "Converting a FLOAT" << std::endl;
+  /* if (_dvalue > FLT_MAX || _dvalue < FLT_MIN) */
+    /* return ("Impossible"); */
+  std::ostringstream oss;
+  oss << f << "f";
+  return oss.str();
 }
 
-void Converter::convert(char c)
+std::string Converter::convert(double d)
 {
-  std::cout << "Converting a CHAR" << std::endl;
+  /* if (_dvalue > DBL_MAX || _dvalue < DBL_MIN) */
+    /* return ("Impossible"); */
+  std::ostringstream oss;
+  oss << d; 
+  return oss.str();
 }
 
+Converter::operator char() const
+{
+  return static_cast<char>(_dvalue);
+}
+
+Converter::operator int() const
+{
+  return static_cast<int>(_dvalue);
+}
+
+Converter::operator float() const
+{
+  return static_cast<float>(_dvalue);
+}
+
+Converter::operator double() const
+{
+  return _dvalue;
+}
+
+
+
+// ==================
+// Printing
+// ==================
 
 void Converter::print()
 {
-  std::cout << std::boolalpha\
-		<< "\nInput: " << "\"" << _str.data() << "\"" \
-		<< "\nis Char: " << this->is_char()\
-		<< "\nis Int: " << this->is_int()\
-		<< "\nis Float: " << this->is_float()\
-		<< "\nis Double: " << this->is_double()\
+  std::cout \
+		<< "\nChar: " << convert( static_cast<char>(*this) )\
+		<< "\nInt: " << convert( static_cast<int>(*this) )\
+		<< "\nFloat: " << convert( static_cast<float>(*this) )\
+		<< "\nDouble: " << convert( static_cast<double>(*this) )\
 		<< std::endl;
 }
 
@@ -109,9 +177,6 @@ void Converter::trim_spaces()
 {
 	unsigned long i = _str.length() - 1;
 
-	LogErr(">>");
-	LogErr(_str.data()[i]);
-	LogErr("<<");
 	while (i > 0 && std::isspace(_str.data()[i]))
 	{
 		_str.replace(i, 1, "\0");
@@ -122,9 +187,14 @@ void Converter::trim_spaces()
 	while (std::isspace(_str.data()[i]))
 	{
 		_str.replace(i, 1, "\0");
-		i;
+		++i;
 	}
 }
+
+
+// ==================
+// Errors
+// ==================
 
 const char* Converter::InvalidConversion::what() const throw()
 {

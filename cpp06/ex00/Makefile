@@ -4,6 +4,7 @@ CC	= g++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors -Wno-unused -Wconversion
 
 NAME := $(notdir $(shell pwd))
+NAME := convert
 SRCS := $(wildcard *.cpp)
 
 OBJDIR	:= obj/
@@ -32,7 +33,7 @@ $(OBJDIR)%.o: %.cpp
 
 clean:
 	@echo $(PURPLE)Deleting Object files
-	@rm -f $(OBJS)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@echo $(PURPLE)Deleting ./$(NAME)

@@ -22,13 +22,23 @@ int main(int argc, char **argv)
 {
 	check_arguments(argc, argv);
 
-	Converter conv(argv[1]);
-  
   try {
-    std::cout << conv << std::endl;
-  } catch (const Converter::InvalidConversion &e) {
-    std::cout <<  "[ERROR CAUGHT]" << e.what() << std::endl;
+    Converter conv(argv[1]);
+    conv.print();
   }
-	/* conv.print(); */
+  catch (const Converter::InvalidLiteral &e)
+  {
+    std::cerr << "[Error]" << e.what() << std::endl;
+    exit(1);
+  }
+ 
+
+  /* try { */
+  /*   std::cout << conv << std::endl; */
+  /* } catch (const Converter::InvalidConversion &e) { */
+  /*   std::cout <<  "[ERROR CAUGHT]" << e.what() << std::endl; */
+  /* } */
+
+
 }
 

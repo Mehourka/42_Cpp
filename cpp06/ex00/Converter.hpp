@@ -2,19 +2,21 @@
 
 #include "Common.hpp"
 #include <exception>
-
-enum e_Type{
-	_char,
-	_int,
-	_float,
-	_double
-};
+#include <climits>
 
 class Converter {
 private:
+
+  enum Type{
+    NoType = 0,
+    Char,
+    Int,
+    Float,
+    Double
+  };
 	std::string	_str;
-	double	*_dvalue;
-	e_Type	_type;
+	double	_dvalue;
+	Type	_type;
 
 public:
 	Converter(); // Canonical
@@ -29,24 +31,20 @@ public:
 	bool is_double();
 	bool is_char();
 
+  std::string convert(int i);
+  std::string convert(double d);
+  std::string convert(float f);
+  std::string convert(char c);
 
-  void convert(int i);
-  void convert(double d);
-  void convert(float f);
-  void convert(char c);
-
-  operator float() const
-  {
-    return 0.42f;
-  }
+  operator char() const;
+  operator int() const;
+  operator float() const;
+  operator double() const;
 
 	void print();
 
 private:
 	void trim_spaces();
-
-	// is_char();
-	// is_int();
 
 public:
   // Error handeling
