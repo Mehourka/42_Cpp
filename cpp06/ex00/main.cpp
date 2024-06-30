@@ -1,6 +1,4 @@
 #include "Converter.hpp"
-#include "Common.hpp"
-
 
 void check_arguments(int argc, char **argv)
 {
@@ -27,5 +25,5 @@ int main(int argc, char **argv)
 	// Converter conv(argv[1]);
 	std::string _str = argv[1];
 	Converter conv(argv[1]);
-	conv.print();
+	/* conv.print(); */
 }

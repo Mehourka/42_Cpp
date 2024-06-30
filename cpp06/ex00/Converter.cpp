@@ -1,4 +1,5 @@
 #include "Converter.hpp"
+#include <iomanip>
 
 Converter::Converter(): _str("")
 {
@@ -7,6 +8,24 @@ Converter::Converter(): _str("")
 Converter ::Converter(const std::string &str): _str(str)
 {
 	this->trim_spaces();
+  if (is_int())
+  {
+    convert(
+      static_cast<int>(std::strtol(_str.data(), NULL, 10))
+    );
+  }
+  else if(is_char())
+  {
+   convert(_str[0]);
+  }
+  else if (is_double())
+  {
+    convert(std::strtod(_str.data(), NULL));
+  }
+  else if (is_float())
+  {
+    convert(std::strtof(_str.data(), NULL));
+  }
 }
 
 Converter::~Converter()
@@ -54,10 +73,31 @@ bool Converter::is_char()
 	return (_str.length() == 1 && std::isprint(_str[0]));
 }
 
+void Converter::convert(int i)
+{
+  std::cout << "Converting an INT" << std::endl;
+}
+
+void Converter::convert(double lit)
+{
+  std::cout << "Converting a DOUBLE" << std::endl;
+}
+
+void Converter::convert(float f)
+{
+  std::cout << "Converting a FLOAT" << std::endl;
+}
+
+void Converter::convert(char c)
+{
+  std::cout << "Converting a CHAR" << std::endl;
+}
+
+
 void Converter::print()
 {
-	std::cout << std::boolalpha\
-		<< "\nRaw: " << std::quoted(_str.data()) \
+  std::cout << std::boolalpha\
+		<< "\nInput: " << "\"" << _str.data() << "\"" \
 		<< "\nis Char: " << this->is_char()\
 		<< "\nis Int: " << this->is_int()\
 		<< "\nis Float: " << this->is_float()\

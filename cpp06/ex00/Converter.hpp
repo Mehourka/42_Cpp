@@ -28,6 +28,13 @@ public:
 	bool is_double();
 	bool is_char();
 
+
+  void convert(int i);
+  void convert(double d);
+  void convert(float f);
+  void convert(char c);
+  
+
 	void print();
 
 private:
