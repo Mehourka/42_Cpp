@@ -41,7 +41,7 @@ Converter::Converter(const Converter &str)
 
 Converter & Converter::operator = (const Converter &other)
 {
-	this->_value = other._value;
+	this->_dvalue = other._dvalue;
 	return *this;
 }
 
@@ -125,3 +125,15 @@ void Converter::trim_spaces()
 		i;
 	}
 }
+
+const char* Converter::InvalidConversion::what() const throw()
+{
+  return ("Impossible Conversion");
+}
+
+const char* Converter::InvalidLiteral::what() const throw()
+{
+  return ("Input is not a valid int|char|float|double Literla");
+}
+
+

@@ -22,8 +22,13 @@ int main(int argc, char **argv)
 {
 	check_arguments(argc, argv);
 
-	// Converter conv(argv[1]);
-	std::string _str = argv[1];
 	Converter conv(argv[1]);
+  
+  try {
+    std::cout << conv << std::endl;
+  } catch (const Converter::InvalidConversion &e) {
+    std::cout <<  "[ERROR CAUGHT]" << e.what() << std::endl;
+  }
 	/* conv.print(); */
 }
+

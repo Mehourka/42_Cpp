@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Common.hpp"
+#include <exception>
 
 enum e_Type{
 	_char,
@@ -12,7 +13,7 @@ enum e_Type{
 class Converter {
 private:
 	std::string	_str;
-	void	*_value;
+	double	*_dvalue;
 	e_Type	_type;
 
 public:
@@ -33,7 +34,11 @@ public:
   void convert(double d);
   void convert(float f);
   void convert(char c);
-  
+
+  operator float() const
+  {
+    return 0.42f;
+  }
 
 	void print();
 
@@ -42,5 +47,18 @@ private:
 
 	// is_char();
 	// is_int();
-	
+
+public:
+  // Error handeling
+  class InvalidConversion : std::exception
+  {
+  public:
+    virtual const char* what() const throw();
+  };
+
+  class InvalidLiteral : std::exception
+  {
+  public:
+    virtual const char* what() const throw();
+  };
 };
