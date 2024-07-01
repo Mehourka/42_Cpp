@@ -11,18 +11,19 @@ OBJS	:= $(SRCS:%.cpp=$(OBJDIR)%.o)
 
 CYAN	:= "\033[0;36m"
 PURPLE	:= "\033[0;35m"
+RESET	:= "\033[00m"
 
 
 all: $(NAME)
 
 run: re
-	@echo $(CYAN)Running ./$(NAME) ... "\n"
+	@echo $(CYAN)Running ./$(NAME) ...$(RESET)"\n"
 	@./$(NAME) $(ARGS)
 
 $(NAME): $(OBJS)
-	@echo $(PURPLE)Compiling ./$(NAME) ...
+	@echo $(PURPLE)Compiling ./$(NAME) ... $(RESET)
 	$(CC) $(CFLAGS) -o $@ $(OBJS)
-	@echo $(CYAN)"Done !\n"
+	@echo $(CYAN)"Done !\n"$(RESET)
 
 $(OBJDIR)%.o: %.cpp
 	@mkdir -p $(@D);
