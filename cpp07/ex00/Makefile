@@ -4,7 +4,6 @@ CC	= g++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors -Wno-unused -Wconversion
 
 NAME := $(notdir $(shell pwd))
-NAME := convert
 SRCS := $(wildcard *.cpp)
 
 OBJDIR	:= obj/
@@ -40,18 +39,6 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean $(NAME)
-
-test: re
-	./$(NAME) 0
-	./$(NAME) nan
-	./$(NAME) 42.0f
-	./$(NAME) 123
-	./$(NAME) -nanf
-	./$(NAME) -inf
-	./$(NAME) inff
-	./$(NAME) 5000000000
-	./$(NAME) -420000000
-
 
 leak: re
 	leaks -atExit -- ./$(NAME)
