@@ -4,7 +4,7 @@ CC	= g++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors -Wno-unused -Wconversion
 
 NAME := $(notdir $(shell pwd))
-NAME := identifie
+NAME := identify
 SRCS := $(wildcard *.cpp)
 
 OBJDIR	:= obj/
