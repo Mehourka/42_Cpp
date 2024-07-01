@@ -4,7 +4,7 @@ CC	= g++
 CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors -Wno-unused -Wconversion
 
 NAME := $(notdir $(shell pwd))
-NAME := serializer
+NAME := identifie
 SRCS := $(wildcard *.cpp)
 
 OBJDIR	:= obj/
@@ -42,5 +42,5 @@ fclean: clean
 re: fclean $(NAME)
 
 leak: re
-	leaks -atExit -- ./$(NAME)
-# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
+	# leaks -atExit -- ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)

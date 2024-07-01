@@ -3,7 +3,6 @@
 // Common Libraries
 #include <iostream>
 #include <string>
-#include <sstream>
 #include <exception>
 #include <cstdlib>
 #include <iomanip>
