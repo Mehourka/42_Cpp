@@ -27,7 +27,7 @@ public:
   }
   ~Array() {
     Log("Array Destructor");
-    delete _content;
+    delete[] _content;
   }
   Array<T> & operator = (const Array<T> &other) {
     Log("Array equality override");
