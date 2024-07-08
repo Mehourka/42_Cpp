@@ -35,5 +35,5 @@ int main(void)
   } catch (const Array<int>::ForbiddenAccess &e) {
     LogErr(e.what()); 
   }
+  return (0);
 }
-

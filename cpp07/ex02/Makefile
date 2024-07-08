@@ -1,7 +1,7 @@
 ARGS=42.42f
 
 CC	= g++
-CFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic-errors -Wno-unused -Wconversion
+CFLAGS = -g -Wall -Werror -Wextra -std=c++98 -pedantic-errors -Wno-unused -Wconversion
 
 NAME := $(notdir $(shell pwd))
 SRCS := $(wildcard *.cpp)
@@ -42,5 +42,4 @@ fclean: clean
 re: fclean $(NAME)
 
 leak: re
-# leaks -atExit -- ./$(NAME)
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
+	leaks -atExit -- ./$(NAME)
