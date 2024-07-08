@@ -10,13 +10,13 @@ char ft_toupper(const char c)
 
 int main(void)
 {
-  char name[10] = "karim";
+  char str[42] = "some text.";
   int size = 10;
   Log("Initial: ");
-  std::cout << name << std::endl;
-  iter(name, size, ft_toupper);
+  std::cout << str << std::endl;
+  iter(str, size, ft_toupper);
   Log("Result:");
-  std::cout << name << std::endl;
+  std::cout << str << std::endl;
 
 
   int numbers[5] = {1, 2, 3, 4, 5};
