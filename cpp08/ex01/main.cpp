@@ -8,10 +8,10 @@ void test_negative_spans();
 void test_insert_range();
 
 int main() {
-	// test_spans();
+	test_spans();
 	// test_max_size();
 	// test_negative_spans();
-	test_insert_range();
+	// test_insert_range();
 }
 
 void test_spans() {
