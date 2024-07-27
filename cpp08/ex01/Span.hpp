@@ -3,9 +3,12 @@
 #include <iostream>
 
 class Span {
+public:
 	class SpanOverflow: std::exception{
+	public:
 		char const *what() const throw();
 	};
+
 public:
 	Span(int N);
 	~Span();
