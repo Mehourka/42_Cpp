@@ -33,8 +33,5 @@ int main()
 
 
 	std::cout << sp << std::endl;
-
 	return 0;
-
-
 }
