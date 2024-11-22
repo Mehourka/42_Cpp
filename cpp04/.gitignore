@@ -1,9 +1,0 @@
-*
-
-!ex0*/
-!*.cpp
-!*.hpp
-!*.h
-!*Makefile
-
-!.gitignore

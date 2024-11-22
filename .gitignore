@@ -1,11 +1,5 @@
 *
-
-!cpp0*/
-!cpp0*/ex0*/
-!template/
+!ex0*/
 !*.cpp
 !*.hpp
-!*.h
-!*Makefile
-
-!.gitignore
+!Makefile
