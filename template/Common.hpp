@@ -5,9 +5,6 @@
 #include <string>
 #include <sstream>
 #include <exception>
-#include <cstdlib>
-#include <iomanip>
-
 
 // ANSI Colors
 #define GRAY "\033[30m"
@@ -18,7 +15,7 @@
 #define YELLOW "\033[33m"
 
 // Set true for debug
-#define _LOG true
+#define _LOG false
 
 // std::cout Macros
 #define Log(x) \
@@ -29,3 +26,4 @@
 #define LogErr(x) std::cerr << RED << (x) << WHITE << std::endl
 
 using std::string;
+
